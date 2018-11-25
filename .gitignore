@@ -1,4 +1,4 @@
 composer*
 vendor
 test
-/nbproject/private/
+nbproject
