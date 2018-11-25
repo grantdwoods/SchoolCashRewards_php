@@ -1,9 +1,10 @@
 <?php
-function PDOexecuteA($sql, $varArray) 
+//non-query
+function PDOexecuteNonQuery($sql, $varArray) 
 {
     $host = "localhost";
     $db   = "grantwoo_sp_auth";
-    $user = "grantwoo_user_admin";
+    $user = "grantwoo_user_nonquery";
     $pass = "fk54}zDWK*}N-W";
     $charset = "utf8";
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -26,11 +27,12 @@ function PDOexecuteA($sql, $varArray)
         return $stmt->rowCount();
 }
 
-function PDOexecuteV($sql, $varArray) 
+//query
+function PDOexecuteQuery($sql, $varArray) 
 {
     $host = "localhost";
     $db   = "grantwoo_sp_auth";
-    $user = "grantwoo_user_verify";
+    $user = "grantwoo_user_query";
     $pass = "u$(8ShY'PG=p^5";
     $charset = "utf8";
 
