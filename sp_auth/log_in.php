@@ -7,14 +7,16 @@ $userID = filter_input(INPUT_POST, 'userID');
 $password = filter_input(INPUT_POST, 'passWord');
 if($userID && $password)
 {
-    $role = verifyUser($userID,$password);
-    if($role)
+    $verify = verifyUser($userID,$password);
+    echo var_dump($verify);
+    if($verify['role'] && $verify['schoolID'])
     {
         $key = '{t:p5?a6jAtjEk&dh@J|)P/;Pa?E';
         $payload = array('userID' => $userID,
-                          'role' => $role);
+                          'role' => $verify['role'],
+                          'schoolID' => $verify['schoolID']);
         $jwt = JWT::encode($payload, $key);
-        echo json_encode(array('jwt'=> $jwt, 'role' => $role));
+        echo json_encode(array('jwt'=> $jwt, 'role' => $verify['role']));
     }
     else
       http_response_code (400);

@@ -17,14 +17,15 @@ function checkForExistingUser($userID)
 }
 function verifyUser($userID, $password)
 {
-    $sql = 'SELECT hash, role FROM accounts WHERE userID=?';
+    $sql = 'SELECT hash, role, schoolID FROM accounts WHERE userID=?';
     $results = PDOexecuteQuery($sql, [$userID]);
     if($results)
     {
       $hash = $results[0]['hash'];
       if(password_verify($password, $hash))
       {
-          return $results[0]['role'];
+          return array('role'=>$results[0]['role'],
+                       'schoolID'=>$results[0]['schoolID']);
       }
     }
     return null;
@@ -42,13 +43,13 @@ function removeUser($userID)
 function removeSchool($userID)
 {
     $sql = 'DELETE FROM accounts WHERE school_id =('
-            . 'SELECT school_id FROM accounts WHERE user_id =?)';
+            . 'SELECT schoolID FROM accounts WHERE user_id =?)';
     return PDOexecuteNonQuery($sql, [$userID]);
 }
 function adminCount($userID)
 {
     $sql = 'SELECT userID FROM accounts WHERE school_id =('
-            . 'SELECT school_id from accounts WHERE userID =?) AND role=?';
+            . 'SELECT schoolID from accounts WHERE userID =?) AND role=?';
     $results = PDOexecuteQuery($sql,[$userID, 'a']);
     return count($results);
 }
