@@ -52,3 +52,9 @@ function adminCount($userID)
     $results = PDOexecuteQuery($sql,[$userID, 'a']);
     return count($results);
 }
+function changePassword($userID, $passWord)
+{
+    $hash = password_hash($passWord,PASSWORD_DEFAULT );
+    $sql = 'UPDATE accounts SET hash = ? WHERE userID = ?';
+    return PDOexecuteNonQuery($sql, [$hash, $userID]);
+}
