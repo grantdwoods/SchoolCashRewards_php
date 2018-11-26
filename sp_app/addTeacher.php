@@ -1,4 +1,4 @@
 <?php
-include('../verifyJWT.php');
+include '../verifyJWT.php';
 
 $claim = verifyToken();
