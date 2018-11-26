@@ -8,7 +8,6 @@ $password = filter_input(INPUT_POST, 'passWord');
 if($userID && $password)
 {
     $verify = verifyUser($userID,$password);
-    echo var_dump($verify);
     if($verify['role'] && $verify['schoolID'])
     {
         $key = '{t:p5?a6jAtjEk&dh@J|)P/;Pa?E';

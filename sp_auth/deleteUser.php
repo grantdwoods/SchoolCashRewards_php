@@ -1,6 +1,6 @@
 <?php
 include 'queries.php';
-include 'verifyJWT.php';
+include '../verifyJWT.php';
 
 $claim = verifyToken();
 $userID = filter_input(INPUT_POST, 'userID');
@@ -9,11 +9,11 @@ if(!$claim)
 {
     http_response_code(401);
 }
-elseif($userID && claim["role"])
+elseif($userID && $claim['role'])
 {
    if(checkForExistingUser($userID))
    {
-       $isAdmin = (claim["role"] === 'a');
+       $isAdmin = ($claim['role'] === 'a');
        if($isAdmin)
            removeAdminAccount($userID);
        else

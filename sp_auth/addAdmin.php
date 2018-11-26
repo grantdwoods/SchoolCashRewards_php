@@ -1,6 +1,6 @@
 <?php
 include('queries.php');
-include('verifyJWT.php');
+include('../verifyJWT.php');
 
 $claim = verifyToken();
 $nonAdmin = filter_input(INPUT_POST, 'userID');

@@ -4,7 +4,7 @@ include_once('authDBconn.php');
 function addUser($userID,$passWord,$role,$schoolID)
 {
     $hash = password_hash($passWord,PASSWORD_DEFAULT );
-    $sql = 'INSERT INTO accounts (userID, hash, role, school_id) VALUES (?,?,?,?)';
+    $sql = 'INSERT INTO accounts (userID, hash, role, intSchoolID) VALUES (?,?,?,?)';
     return PDOexecuteNonQuery($sql,[$userID,$hash,$role,$schoolID]);
 }
 function checkForExistingUser($userID)
@@ -42,13 +42,13 @@ function removeUser($userID)
 }
 function removeSchool($userID)
 {
-    $sql = 'DELETE FROM accounts WHERE school_id =('
+    $sql = 'DELETE FROM accounts WHERE intSchoolID =('
             . 'SELECT intSchoolID FROM accounts WHERE user_id =?)';
     return PDOexecuteNonQuery($sql, [$userID]);
 }
 function adminCount($userID)
 {
-    $sql = 'SELECT userID FROM accounts WHERE school_id =('
+    $sql = 'SELECT userID FROM accounts WHERE intSchoolID =('
             . 'SELECT intSchoolID from accounts WHERE userID =?) AND role=?';
     $results = PDOexecuteQuery($sql,[$userID, 'a']);
     return count($results);
