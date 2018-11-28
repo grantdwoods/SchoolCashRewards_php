@@ -2,8 +2,6 @@
 include '../verifyJWT.php';
 include 'appDBconn.php';
 
-echo 'HARRO';
-
 $claim = verifyToken();
 
 if($claim)
@@ -31,7 +29,7 @@ function getRequest($claim)
   
   if($userID)
   {
-      $sql = 'SELECT FROM tblteacher WHERE strTeacherID = ?';
+      $sql = 'SELECT * FROM tblteacher WHERE strTeacherID = ?';
       $results = PDOexecuteQuery($sql,[$userID]);
       if($results)
       {
@@ -43,7 +41,15 @@ function getRequest($claim)
   }
   elseif($claim['schoolID'])
   {
-      $sql = 'SELECT FROM tblteacher WHERE intSchoolID = ?';
+      $sql = 'SELECT * FROM tblteacher WHERE intSchoolID = ?';
+      $results = PDOexecuteQuery($sql, [$claim['schoolID']]);
+      if($results)
+      {
+          http_response_code(200);
+          echo json_encode($results);
+      }
+      else
+          http_response_code (400);
   }
   else
       http_response_code (400);
