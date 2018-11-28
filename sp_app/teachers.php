@@ -55,9 +55,27 @@ function getRequest($claim)
       http_response_code (400);
 }
 
-function postRequest()
+function postRequest($claim)
 {
+    $schoolID = $claim['schoolID'];
+    $userID = $claim['userID'];
+    $firstName = filter_input(INPUT_GET, 'firstName');
+    $lastName = filter_input(INPUT_GET, 'lastName');
     
+    if($schoolID && $userID && $firstName && $lastName)
+    {
+        $sql = 'INSTER INTO tblteacher (intSchoolID, strTeacherID, strFirstName, strLastName)'
+                . 'VALUES (?,?,?,?)';
+        $results = PDOexecuteNonQuery($sql, [$schoolID, $userID, $firstName, $lastName]);
+        if($results)
+        {
+            http_response_code(201);
+        }
+        else
+            http_response_code(500);
+    }
+    else
+        http_response_code(400);
 }
 
 function putRequest()
