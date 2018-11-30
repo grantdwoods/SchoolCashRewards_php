@@ -8,35 +8,35 @@ function getRequest($claim)
 {
   $userID = filter_input(INPUT_GET, 'userID');
   $schoolID = $claim['schoolID'];
+  $sql = 'SELECT * FROM tblteacher WHERE intSchoolID = ?';
   
   if($userID && $schoolID)
   {
-      $sql = 'SELECT * FROM tblteacher WHERE strTeacherID = ? AND intSchoolID = ?';
-      $results = PDOexecuteQuery($sql,[$userID, $schoolID]);
-      if($results)
-      {
-        http_response_code (201);
-        echo json_encode($results);
-      }
-      else
-          http_response_code (500);
+      $sql .= ' AND strTeacherID = ?';
+      $results = PDOexecuteQuery($sql,[$schoolID,$userID]);
+      checkGetResults($results);
   }
   elseif($schoolID)
   {
-      $sql = 'SELECT * FROM tblteacher WHERE intSchoolID = ?';
       $results = PDOexecuteQuery($sql, [$claim['schoolID']]);
-      if($results)
-      {
-          http_response_code(200);
-          echo json_encode($results);
-      }
-      else
-          http_response_code (400);
+      checkGetResults($results);
   }
   else
       http_response_code (400);
 }
-
+function checkGetResults($results)
+{
+    if($results)
+    {
+        echo json_encode($results);
+        http_response_code (200);
+    }
+    else
+    {
+        echo json_encode(array('err-message'=>'No results.'));
+        http_response_code (200);
+    }
+}
 function postRequest($claim)
 {
     $schoolID = $claim['schoolID'];
