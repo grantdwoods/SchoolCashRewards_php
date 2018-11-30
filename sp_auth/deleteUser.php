@@ -31,7 +31,11 @@ function processDeleteRequest()
                 removeAccount($userID);
         }
    else
-        http_response_code(404);
+   {
+       http_response_code(200);
+       echo json_encode(array('err-message'=>'User does not exist.'));
+   }
+        
 }
 else
     http_response_code (400);
