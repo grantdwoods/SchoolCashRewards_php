@@ -1,27 +1,8 @@
 <?php
-include '../verifyJWT.php';
 include 'appDBconn.php';
+include 'validateRequest.php';
 
-$claim = verifyToken();
-
-if($claim)
-{
-    filterOptions($claim);   
-}
-
-function filterOptions($claim)
-{
-    if($_SERVER['REQUEST_METHOD'] === 'GET')
-        getRequest($claim);
-    else if($_SERVER['REQUEST_METHOD'] === 'POST')
-        postRequest($claim);
-    else if($_SERVER['REQUEST_METHOD'] === 'DELETE')
-        deleteRequest($claim);
-    else if($_SERVER['REQUEST_METHOD'] === 'PUT')
-        putRequest($claim);
-    else
-        http_response_code(501);
-}
+validateRequest();
 
 function getRequest($claim)
 {
