@@ -31,7 +31,7 @@ function postRequest($claim)
     $sql = 'INSERT INTO tblteaches (strTeacherID, intClassID) VALUES(?,?)';
     if($otherTeacher && $classID)
     {
-        
+        //testing branching
     }
     elseif($claim['userID'] && $classID)
     {
