@@ -27,12 +27,11 @@ function getRequest($claim)
 function postRequest($claim)
 {
     $teacher ='';
-    if(isset($_GET['userID']))
-        $teacher = filter_input(INPUT_GET, 'userID'); 
+    if(isset($_POST['userID']))
+        $teacher = filter_input(INPUT_POST, 'userID'); 
     else
         $teacher = $claim['userID'];
-    
-    $classID = filter_input(INPUT_GET, 'classID');
+    $classID = filter_input(INPUT_POST, 'classID');
     $sql = 'INSERT INTO tblteaches (strTeacherID, intClassID) VALUES(?,?)';
     if($teacher && $classID)
     {
