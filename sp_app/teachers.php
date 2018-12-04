@@ -54,12 +54,17 @@ function postRequest($claim)
 
 function putRequest($claim)
 {
+
+}
+
+function deleteRequest($claim)
+{
     $str = file_get_contents('php://input');
-    $putVars = json_decode($str,true);
-    if($putVars['userID'] && $putVars['classID'])
+    $deleteVars = json_decode($str, true);
+    if($deleteVars['userID'])
     {
-        $sql = 'UPDATE tblTeaches SET intClassID = ? WHERE strTeacherID = ?';
-        if(PDOexecuteNonQuery($sql, [$putVars['classID'], $putVars['userID']]))
+        $sql = 'DELETE from tblteachers WHERE userID = ?';
+        if(PDOexecuteNonQuery($sql, [$deleteVars['userID']]))
             http_response_code (200);
         else
         {
@@ -69,11 +74,4 @@ function putRequest($claim)
     }
     else
         http_response_code (400);
-}
-
-function deleteRequest($claim)
-{
-    $str = file_get_contents('php://input');
-    $deleteVars = json_decode($str, true);
-    echo var_dump($deleteVars);
 }
