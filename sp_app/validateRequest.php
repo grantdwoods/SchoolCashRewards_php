@@ -25,3 +25,17 @@ function filterOptions($claim)
     else
         http_response_code(501);
 }
+
+function checkGetResults($results)
+{
+    if($results)
+    {
+        http_response_code (200);
+        echo json_encode($results);
+    }
+    else
+    {
+        http_response_code (200);
+        echo json_encode(array('err-message'=>'No results.'));
+    } 
+}

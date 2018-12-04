@@ -24,19 +24,7 @@ function getRequest($claim)
   else
       http_response_code (400);
 }
-function checkGetResults($results)
-{
-    if($results)
-    {
-        echo json_encode($results);
-        http_response_code (200);
-    }
-    else
-    {
-        echo json_encode(array('err-message'=>'No results.'));
-        http_response_code (200);
-    }
-}
+
 function postRequest($claim)
 {
     $schoolID = $claim['schoolID'];
