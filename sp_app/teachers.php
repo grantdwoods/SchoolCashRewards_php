@@ -42,7 +42,11 @@ function postRequest($claim)
             http_response_code(201);
         }
         else
+        {
             http_response_code(500);
+            echo json_encode(array('err-message'=>'No data added.')); 
+        }
+            
     }
     else
         http_response_code(400);
@@ -52,7 +56,19 @@ function putRequest($claim)
 {
     $str = file_get_contents('php://input');
     $putVars = json_decode($str,true);
-    echo var_dump($putVars);
+    if($putVars['userID'] && $putVars['classID'])
+    {
+        $sql = 'UPDATE tblTeaches SET intClassID = ? WHERE strTeacherID = ?';
+        if(PDOexecuteNonQuery($sql, [$putVars['classID'], $putVars['userID']]))
+            http_response_code (200);
+        else
+        {
+            http_response_code(200);
+            echo json_encode(array('err-message'=>'No changes.'));
+        }
+    }
+    else
+        http_response_code (400);
 }
 
 function deleteRequest($claim)
