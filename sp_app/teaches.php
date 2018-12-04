@@ -51,7 +51,9 @@ function postRequest($claim)
 
 function putRequest($claim)
 {
-    
+    $str = file_get_contents('php://input');
+    $putVars = json_decode($str,true);
+    echo var_dump($putVars);
 }
 
 function deleteRequest($claim)

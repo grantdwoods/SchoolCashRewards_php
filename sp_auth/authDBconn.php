@@ -22,7 +22,7 @@ function PDOexecuteNonQuery($sql, $varArray)
             http_response_code(500);
             die(json_encode(array('outcome' => false, 'err-message' => 'Unable to connect')));
         }
-        $stmt = bindVariables($varArray, $pdo,$sql);
+        $stmt = executeSQL($varArray, $pdo,$sql);
         //Returns the number of rows changed by the last query.
         return $stmt->rowCount();
 }
