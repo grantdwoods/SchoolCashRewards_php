@@ -49,11 +49,11 @@ function PDOexecuteQuery($sql, $varArray)
             http_response_code(500);
             die(json_encode(array('outcome' => false, 'err-message' => 'Unable to connect')));
         }
-        $stmt = bindVariables($varArray, $pdo,$sql);
+        $stmt = executeSQL($varArray, $pdo,$sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function bindVariables($varArray,$pdo,$sql)
+function executeSQL($varArray,$pdo,$sql)
 {
     if (count($varArray) == 0) 
     {

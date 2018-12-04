@@ -26,17 +26,20 @@ function getRequest($claim)
 
 function postRequest($claim)
 {
-    $otherTeacher = filter_input(INPUT_GET, 'userID');
+    $teacher ='';
+    if(isset($_GET['userID']))
+        $teacher = filter_input(INPUT_GET, 'userID'); 
+    else
+        $teacher = $claim['userID'];
+    
     $classID = filter_input(INPUT_GET, 'classID');
     $sql = 'INSERT INTO tblteaches (strTeacherID, intClassID) VALUES(?,?)';
-    if($otherTeacher && $classID)
+    if($teacher && $classID)
     {
-        //testing branching
-    }
-    elseif($claim['userID'] && $classID)
-    {
-        
-        
+        if(PDOexecuteNonQuery($sql, [$teacher,$classID]))
+            http_response_code (201);
+        else
+            http_response_code (400);
     }
     else
         http_response_code (400);
