@@ -6,17 +6,18 @@ validateRequest();
 
 function getRequest($claim)
 {
-    $otherTeacher = filter_input(INPUT_GET, 'userID');
+    $teacher = '';
+    
+    if(isset($_GET['userID']))
+        $teacher = filter_input(INPUT_GET, 'userID');
+    else
+        $teacher = $claim['userID'];
+    
     $sql = 'SELECT intClassID FROM tblteaches WHERE strTeacherID = ?';
     
-    if($otherTeacher)
+    if($teacher)
     {
         $results = PDOexecuteQuery($sql, [$otherTeacher]);
-        checkGetResults($results);
-    }
-    elseif($claim['userID'])
-    {   
-        $results = PDOexecuteQuery($sql, [$claim['userID']]);
         checkGetResults($results);
     }
     else
@@ -27,12 +28,15 @@ function getRequest($claim)
 function postRequest($claim)
 {
     $teacher ='';
+    
     if(isset($_POST['userID']))
         $teacher = filter_input(INPUT_POST, 'userID'); 
     else
         $teacher = $claim['userID'];
+    
     $classID = filter_input(INPUT_POST, 'classID');
     $sql = 'INSERT INTO tblteaches (strTeacherID, intClassID) VALUES(?,?)';
+    
     if($teacher && $classID)
     {
         if(PDOexecuteNonQuery($sql, [$teacher,$classID]))
