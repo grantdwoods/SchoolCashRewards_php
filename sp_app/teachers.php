@@ -7,7 +7,7 @@ validateRequest();
 
 function getRequest($claim)
 {
-  $userID = filter_input(INPUT_GET, 'userID');
+  $userID = filter_input(INPUT_GET, 'userID', FILTER_SANITIZE_STRING);
   $schoolID = $claim['schoolID'];
   $sql = 'SELECT * FROM tblteacher WHERE intSchoolID = ?';
   
@@ -30,8 +30,8 @@ function postRequest($claim)
 {
     $schoolID = $claim['schoolID'];
     $userID = $claim['userID'];
-    $firstName = filter_input(INPUT_POST, 'firstName');
-    $lastName = filter_input(INPUT_POST, 'lastName');
+    $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+    $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
     
     if($schoolID && $userID && $firstName && $lastName)
     {
@@ -53,9 +53,9 @@ function deleteRequest($claim)
 {
     $str = file_get_contents('php://input');
     $deleteVars = json_decode($str, true);
-    if($deleteVars['userID'])
+    if(isset($deleteVars['userID']))
     {
-        $sql = 'DELETE from tblteachers WHERE userID = ?';
+        $sql = 'DELETE from tblteacher WHERE strTeacherID = ?';
         if(PDOexecuteNonQuery($sql, [$deleteVars['userID']]))
             http_response_code (200);
         else
