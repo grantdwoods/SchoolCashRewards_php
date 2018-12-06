@@ -18,7 +18,7 @@ function getRequest($claim)
     
     if($teacher)
     {
-        $results = PDOexecuteQuery($sql, [$otherTeacher]);
+        $results = PDOexecuteQuery($sql, [$teacher]);
         checkGetResults($results);
     }
     else
