@@ -1,6 +1,7 @@
 <?php
 include 'appDBconn.php';
 include 'validateRequest.php';
+include 'verifyResults.php';
 
 validateRequest();
 
@@ -14,12 +15,12 @@ function getRequest($claim)
   {
       $sql .= ' AND strTeacherID = ?';
       $results = PDOexecuteQuery($sql,[$schoolID,$userID]);
-      checkGetResults($results);
+      verifyGetResults($results);
   }
   elseif($schoolID)
   {
       $results = PDOexecuteQuery($sql, [$claim['schoolID']]);
-      checkGetResults($results);
+      verifyGetResults($results);
   }
   else
       http_response_code (400);
@@ -37,16 +38,7 @@ function postRequest($claim)
         $sql = 'INSERT INTO tblteacher (intSchoolID, strTeacherID, strFirstName, strLastName)'
                 . 'VALUES (?,?,?,?)';
         $results = PDOexecuteNonQuery($sql, [$schoolID, $userID, $firstName, $lastName]);
-        if($results)
-        {
-            http_response_code(201);
-        }
-        else
-        {
-            http_response_code(500);
-            echo json_encode(array('err-message'=>'No data added.')); 
-        }
-            
+        verifyPostResults($results);
     }
     else
         http_response_code(400);
@@ -54,7 +46,7 @@ function postRequest($claim)
 
 function putRequest($claim)
 {
-
+    //Teacher name change?
 }
 
 function deleteRequest($claim)

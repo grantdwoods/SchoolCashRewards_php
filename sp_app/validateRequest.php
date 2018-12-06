@@ -14,28 +14,16 @@ function validateRequest()
 
 function filterOptions($claim)
 {
-    if($_SERVER['REQUEST_METHOD'] === 'GET')
+    $request = filter_var(getenv('REQUEST_METHOD'));
+    
+    if($request === 'GET')
         getRequest($claim);
-    else if($_SERVER['REQUEST_METHOD'] === 'POST')
+    else if($request === 'POST')
         postRequest($claim);
-    else if($_SERVER['REQUEST_METHOD'] === 'DELETE')
+    else if($request === 'DELETE')
         deleteRequest($claim);
-    else if($_SERVER['REQUEST_METHOD'] === 'PUT')
+    else if($request === 'PUT')
         putRequest($claim);
     else
         http_response_code(501);
-}
-
-function checkGetResults($results)
-{
-    if($results)
-    {
-        http_response_code (200);
-        echo json_encode($results);
-    }
-    else
-    {
-        http_response_code (200);
-        echo json_encode(array('err-message'=>'No results.'));
-    } 
 }

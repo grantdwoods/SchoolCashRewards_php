@@ -1,6 +1,7 @@
 <?php
 include 'appDBconn.php';
 include 'validateRequest.php';
+include 'verifyResults.php';
 
 validateRequest();
 

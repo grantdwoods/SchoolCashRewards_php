@@ -1,6 +1,7 @@
 <?php
 include 'appDBconn.php';
 include 'validateRequest.php';
+include 'verifyResults.php';
 
 validateRequest();
 
@@ -12,7 +13,7 @@ function getRequest($claim)
         $sql = 'SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
                 . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?)';
         $results = PDOexecuteQuery($sql, [$classID, $claim['schoolID']]);
-        checkGetResults($results);
+        verifyGetResults($results);
     }
     else
         http_response_code (401);
@@ -26,10 +27,8 @@ function postRequest($claim)
         $classID = filter_input(INPUT_POST, 'classID');
         
         $sql = 'INSERT INTO tblTakes (strStudentID, intClassID) VALUES (?,?)';
-        if(PDOexecuteNonQuery($sql,[$userID, $classID]))
-            http_response_code (201);
-        else
-            http_response_code (500);
+        $results = PDOexecuteNonQuery($sql,[$userID, $classID]);
+        verifyPostResults($results);
     }
     else
         http_response_code (400);
