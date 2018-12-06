@@ -25,3 +25,19 @@ function verifyPostResults($results)
         echo json_encode(array('err-message'=>'No data added.')); 
     } 
 }
+
+function verifyPutResults($results)
+{
+    verifyDeleteResults($results);
+}
+
+function verifyDeleteResults($results)
+{
+    if($results)
+        http_response_code (200);
+    else
+    {
+        http_response_code(200);
+        echo json_encode(array('err-message'=>'No changes.'));
+    }
+}

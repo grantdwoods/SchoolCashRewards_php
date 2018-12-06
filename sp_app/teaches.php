@@ -10,7 +10,7 @@ function getRequest($claim)
     $teacher = '';
     
     if(isset($_GET['userID']))
-        $teacher = filter_input(INPUT_GET, 'userID');
+        $teacher = filter_input(INPUT_GET, 'userID', FILTER_SANITIZE_STRING);
     else
         $teacher = $claim['userID'];
     
@@ -31,23 +31,17 @@ function postRequest($claim)
     $teacher ='';
     
     if(isset($_POST['userID']))
-        $teacher = filter_input(INPUT_POST, 'userID'); 
+        $teacher = filter_input(INPUT_POST, 'userID', FILTER_SANITIZE_STRING); 
     else
         $teacher = $claim['userID'];
     
-    $classID = filter_input(INPUT_POST, 'classID');
+    $classID = filter_input(INPUT_POST, 'classID', FILTER_SANITIZE_NUMBER_INT);
     $sql = 'INSERT INTO tblteaches (strTeacherID, intClassID) VALUES(?,?)';
     
     if($teacher && $classID)
-    {
-        if(PDOexecuteNonQuery($sql, [$teacher,$classID]))
-            http_response_code (201);
-        else
-            http_response_code (400);
-    }
+        verifyPostResults(PDOexecuteNonQuery($sql, [$teacher,$classID]));
     else
         http_response_code (400);
-    
 }
 
 function putRequest($claim)
@@ -57,13 +51,8 @@ function putRequest($claim)
     if(isset($putVars['userID']) && isset($putVars['classID']))
     {
         $sql = 'UPDATE tblteaches SET intClassID = ? WHERE strTeacherID = ?';
-        if(PDOexecuteNonQuery($sql, [$putVars['classID'], $putVars['userID']]))
-            http_response_code (200);
-        else
-        {
-            http_response_code(200);
-            echo json_encode(array('err-message'=>'No changes.'));
-        }
+        $results = PDOexecuteNonQuery($sql, [$putVars['classID'], $putVars['userID']]);
+        verifyPutResults($results);
     }
     else
         http_response_code (400);
@@ -98,11 +87,5 @@ function deleteRequest($claim)
 
 function deleteData($sql,$sqlVars)
 {
-    if(PDOexecuteNonQuery($sql, $sqlVars))
-        http_response_code (200);
-    else
-    {
-        http_response_code(200);
-        echo json_encode(array('err-message'=>'No changes.'));
-    }
+    verifyDeleteResults(PDOexecuteNonQuery($sql, $sqlVars));
 }
