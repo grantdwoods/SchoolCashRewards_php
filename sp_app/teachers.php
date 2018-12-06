@@ -56,13 +56,7 @@ function deleteRequest($claim)
     if(isset($deleteVars['userID']))
     {
         $sql = 'DELETE from tblteacher WHERE strTeacherID = ?';
-        if(PDOexecuteNonQuery($sql, [$deleteVars['userID']]))
-            http_response_code (200);
-        else
-        {
-            http_response_code(200);
-            echo json_encode(array('err-message'=>'No changes.'));
-        }
+        verifyDeleteResults(PDOexecuteNonQuery($sql, [$deleteVars['userID']]));
     }
     else
         http_response_code (400);
