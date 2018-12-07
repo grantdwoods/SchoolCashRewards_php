@@ -7,21 +7,17 @@ validateRequest();
 
 function getRequest($claim)
 {
-    if($claim['schoolID'])
+    $classID = filter_input(INPUT_GET, 'classID', FILTER_SANITIZE_NUMBER_INT);
+    if($classID)
     {
-        $classID = filter_input(INPUT_GET, 'classID', FILTER_SANITIZE_NUMBER_INT);
-        if($classID)
-        {
-            $sql = 'SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
-                . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?)';
-            $results = PDOexecuteQuery($sql, [$classID, $claim['schoolID']]);
-            verifyGetResults($results);
-        }
-        else
-            http_response_code (400);
+        $sql = 'SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
+             . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?)';
+        $results = PDOexecuteQuery($sql, [$classID, $claim['schoolID']]);
+        verifyGetResults($results);
     }
     else
-        http_response_code (401);
+        http_response_code (400);
+
 }
 
 function postRequest($claim)

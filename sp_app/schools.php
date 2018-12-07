@@ -12,7 +12,7 @@ function getRequest($claim)
 
 function postRequest($claim)
 {
-    
+
 }
 
 function putRequest($claim)
