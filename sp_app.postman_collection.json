@@ -1,0 +1,619 @@
+{
+	"info": {
+		"_postman_id": "a40707b4-cb8a-4782-88c9-e21a8617f751",
+		"name": "sp_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tblTeacher",
+			"item": [
+				{
+					"name": "In progress",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"schoolID\": 1000,\n\t\"userID\": \"A24DD\",\n\t\"firstName\": \"Dannnn\",\n\t\"lastName\": \"Tappan\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teachers.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teachers.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "A24DD",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All teachers matching claim schoolID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teachers.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teachers.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher by userID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teachers.php?userID=Tim",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teachers.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "Tim"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\": \"grant\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teachers.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teachers.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher by claim",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "grant",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "woods",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teachers.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teachers.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblTeaches",
+			"item": [
+				{
+					"name": "Class taught by claim teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teaches.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Class taught by other teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php?userID=AAAAA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teaches.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "AAAAA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Class by claim teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "classID",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teaches.php"
+							],
+							"query": [
+								{
+									"key": "classID",
+									"value": "11",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Class by other teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userID",
+									"value": "stan",
+									"type": "text"
+								},
+								{
+									"key": "classID",
+									"value": "25",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teaches.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\": \"grant\",\n\t\"classID\": \"10\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teaches.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\": \"grant\",\n\t\"classID\": \"10\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"teaches.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblTakes",
+			"item": [
+				{
+					"name": "With JSON",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\":\"Ryan\",\n\t\"classID\":\"25\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/takes.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"takes.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userID",
+									"value": "Jane",
+									"type": "text"
+								},
+								{
+									"key": "classID",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/takes.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"takes.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By class ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/takes.php?classID=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"takes.php"
+							],
+							"query": [
+								{
+									"key": "classID",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblStudent",
+			"item": [
+				{
+					"name": "By form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userID",
+									"value": "Ryan",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "Rayanson",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Rhonin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/students.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"students.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON +/- coupons",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\":\"Bobby\",\n\t\"coupons\":\"-10\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/students.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"students.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
