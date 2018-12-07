@@ -10,7 +10,8 @@ function getRequest($claim)
     $userID = filter_input(INPUT_GET, 'userID', FILTER_SANITIZE_STRING);
     if($userID)
     {
-        $sql = 'SELECT strFirstName, StrLastName, intCoupsons WHERE strStudentID = ?';
+        $sql = 'SELECT strFirstName, StrLastName, intCoupons from tblstudent'
+                . ' WHERE strStudentID = ?';
         verifyGetResults(PDOexecuteQuery($sql, [$userID]));
     }
     else
