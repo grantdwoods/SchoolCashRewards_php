@@ -11,19 +11,17 @@ function getRequest($claim)
   $schoolID = $claim['schoolID'];
   $sql = 'SELECT * FROM tblteacher WHERE intSchoolID = ?';
   
-  if($userID && $schoolID)
+  if($userID)
   {
       $sql .= ' AND strTeacherID = ?';
       $results = PDOexecuteQuery($sql,[$schoolID,$userID]);
       verifyGetResults($results);
   }
-  elseif($schoolID)
+  else
   {
       $results = PDOexecuteQuery($sql, [$claim['schoolID']]);
       verifyGetResults($results);
   }
-  else
-      http_response_code (400);
 }
 
 function postRequest($claim)
@@ -33,7 +31,7 @@ function postRequest($claim)
     $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
     $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
     
-    if($schoolID && $userID && $firstName && $lastName)
+    if($firstName && $lastName)
     {
         $sql = 'INSERT INTO tblteacher (intSchoolID, strTeacherID, strFirstName, strLastName)'
                 . 'VALUES (?,?,?,?)';
