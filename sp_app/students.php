@@ -10,7 +10,8 @@ function getRequest($claim)
     $userID = filter_input(INPUT_GET, 'userID', FILTER_SANITIZE_STRING);
     if($userID)
     {
-        
+        $sql = 'SELECT strFirstName, StrLastName, intCoupsons WHERE strStudentID = ?';
+        verifyGetResults(PDOexecuteQuery($sql, [$userID]));
     }
     else
         http_response_code (400);
