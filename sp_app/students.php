@@ -30,13 +30,43 @@ function postRequest($claim)
 
 function putRequest($claim)
 {
-    $schoolID = $claim['schoolID'];
-    $userID = input_filter(INPUT_POST, 'userID', FILTER_SANITIZE_STRING);
-    $coupons = input_filter(INPUT_POST, 'coupons', FILTER_SANITIZE_NUMBER_INT);
-    
+    $str = file_get_contents('php://input');
+    $putVars = json_decode($str,true);
+
+    if($putVars['userID'] && $putVars['coupons'])
+    {
+        $currentCoupons = getCurrentCounponCount($putVars['userID']);
+        if($currentCoupons !== null)
+        {
+            $newCount = addCoupons($currentCoupons, $putVars['coupons']);
+            $sql = 'UPDATE tblStudent SET intCoupons = ? WHERE strStudentID = ?';
+            verifyPutResults(PDOexecuteNonQuery($sql, [$newCount, $putVars['userID']]));
+        }
+        else
+            http_response_code (400);        
+    }
+    else
+        http_response_code(400);
 }
 
 function deleteRequest($claim)
 {
    
+}
+
+function getCurrentCounponCount($userID)
+{
+    $sql = 'SELECT intCoupons FROM tblStudent WHERE strStudentID = ?';
+    $results = PDOexecuteQuery($sql, [$userID]);
+    if(isset($results[0]['intCoupons']))
+        return $results[0]['intCoupons'];
+    return null;
+}
+
+function addCoupons($currentCount, $delta)
+{
+    $newCount = $currentCount + $delta;
+    if($newCount < 0)
+        $newCount = 0;
+    return $newCount;
 }
