@@ -7,7 +7,13 @@ validateRequest();
 
 function getRequest($claim)
 {
-    
+    $userID = filter_input(INPUT_GET, 'userID', FILTER_SANITIZE_STRING);
+    if($userID)
+    {
+        
+    }
+    else
+        http_response_code (400);
 }
 
 function postRequest($claim)
