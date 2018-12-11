@@ -39,7 +39,17 @@ function postRequest($claim)
 
 function putRequest($claim)
 {
-
+    $str = file_get_contents('php://input');
+    $putVars = json_decode($str,true);
+    if(isset($putVars['schoolID'], $putVars['schoolName'], $putVars['cashName']))
+    {
+        $sql = 'UPDATE tblschool SET strSchoolName = ?, strCashName = ? WHERE'
+                . ' intSchoolID = ?';
+        $varArray = [$putVars['schoolName'], $putVars['cashName'], $putVars['schoolID']];
+        verifyPutResults(PDOexecuteNonQuery($sql, $varArray));
+    }
+    else
+        http_response_code (400);
 }
 
 function deleteRequest($claim)
