@@ -42,10 +42,23 @@ function putRequest($claim)
 {
     $str = file_get_contents('php://input');
     $putVars = json_decode($str, true);
-    if(isset($putVars['intClassID'], $putVars['coupons']))
+   
+    if(isset($putVars['classID'], $putVars['coupons']))
     {
-        
+        $currentCount = getCurrentCounponCount($putVars['classID'], $claim['schoolID']);
+        $newCount = addCoupons($currentCount, $putVars['coupons']);
+        if($newCount)
+        {
+            $sql = 'UPDATE tblclass SET intClassCoupons = ? '
+                    . 'WHERE intClassID = ? AND intSchoolID = ?';
+            $varArray = [$newCount, $putVars['classID'], $claim['schoolID']];
+            verifyPutResults(PDOexecuteNonQuery($sql, $varArray));
+        }
+        else
+            http_response_code (500);
     }
+    else
+        http_response_code (400);
 }
 
 function deleteRequest($claim)
