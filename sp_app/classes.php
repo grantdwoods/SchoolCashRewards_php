@@ -63,7 +63,17 @@ function putRequest($claim)
 
 function deleteRequest($claim)
 {
-   
+    $str = file_get_contents('php://input');
+    $putVars = json_decode($str, true);
+    
+    if(isset($putVars['classID']))
+    {
+        $sql = 'DELETE FROM tblclass WHERE intSchoolID = ? AND intClassID = ?';
+        $varArray = [$claim['schoolID'], $putVars['classID']];
+        verifyDeleteResults(PDOexecuteNonQuery($sql, $varArray));
+    }
+    else
+        http_response_code (400);
 }
 
 function addCoupons($currentCount, $delta)
