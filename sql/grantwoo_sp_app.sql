@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2018 at 10:37 PM
+-- Generation Time: Dec 17, 2018 at 11:54 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -106,17 +106,18 @@ CREATE TABLE `tblclass` (
   `intSchoolID` int(11) NOT NULL,
   `intClassID` int(11) NOT NULL,
   `strClassName` varchar(50) COLLATE utf8_bin NOT NULL,
-  `intClassCares` int(11) NOT NULL
+  `intClassCoupons` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tblclass`
 --
 
-INSERT INTO `tblclass` (`intSchoolID`, `intClassID`, `strClassName`, `intClassCares`) VALUES
+INSERT INTO `tblclass` (`intSchoolID`, `intClassID`, `strClassName`, `intClassCoupons`) VALUES
 (1, 10, 'Class', 20),
-(10000, 20437, 'Tom\'s Class', 10),
-(10000, 20488, 'Tappan\'s Class', 10);
+(1, 22, 'Tim\'s Class', 20),
+(1, 25, 'Stan\'s Class', 0),
+(1, 39, 'Jay\'s Class', 0);
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,8 @@ CREATE TABLE `tblhistory` (
   `intSchoolID` int(11) NOT NULL,
   `strStudentID` varchar(30) COLLATE utf8_bin NOT NULL,
   `intItemID` int(11) NOT NULL,
-  `dtmDate` date NOT NULL
+  `dtmDate` date NOT NULL,
+  `strComment` text COLLATE utf8_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -142,6 +144,13 @@ CREATE TABLE `tblschool` (
   `strSchoolName` varchar(100) COLLATE utf8_bin NOT NULL,
   `strCashName` varchar(30) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `tblschool`
+--
+
+INSERT INTO `tblschool` (`intSchoolID`, `strSchoolName`, `strCashName`) VALUES
+(1, 'school1', 'schoolCash1');
 
 -- --------------------------------------------------------
 
@@ -261,6 +270,12 @@ ALTER TABLE `tblcatalogremove`
 --
 ALTER TABLE `tblclass`
   ADD PRIMARY KEY (`intSchoolID`,`intClassID`);
+
+--
+-- Indexes for table `tblhistory`
+--
+ALTER TABLE `tblhistory`
+  ADD PRIMARY KEY (`strStudentID`,`dtmDate`);
 
 --
 -- Indexes for table `tblschool`
