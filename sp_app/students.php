@@ -59,7 +59,27 @@ function putRequest($claim)
 
 function deleteRequest($claim)
 {
-   
+    $str = file_get_contents('php://input');
+    $deleteVars = json_decode($str,true);
+    
+    if(isset($deleteVars['schoolID']))
+        deleteBySchoolID($deleteVars['schoolID']);
+    elseif(isset($deleteVars['userID']))
+        deleteByUserID($deleteVars['userID']);
+    else
+        http_response_code (400);
+}
+
+function deleteBySchoolID($schoolID)
+{
+    $sql = 'DELETE FROM tblstudent WHERE intSchoolID = ?';
+    verifyDeleteResults(PDOexecuteNonQuery($sql, [$schoolID]));
+}
+
+function deleteByUserID($userID)
+{
+    $sql = 'DELETE FROM tblstudent WHERE strStudentID = ?';
+    verifyDeleteResults(PDOexecuteNonQuery($sql, [$userID]));
 }
 
 function getCurrentCounponCount($userID)
