@@ -54,5 +54,15 @@ function putRequest($claim)
 
 function deleteRequest($claim)
 {
-   
+    $str = file_get_contents('php://input');
+    $deleteVars = json_decode($str,true);
+    
+    if(isset($deleteVars['schoolID']))
+    {
+        $sql = 'DELETE from tblschool WHERE intSchoolID = ?';
+        $results = PDOexecuteNonQuery($sql, [$deleteVars['schoolID']]);
+        verifyDeleteResults($results);
+    }
+    else
+        http_response_code (400);
 }
