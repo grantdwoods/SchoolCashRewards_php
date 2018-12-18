@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2018 at 10:10 PM
+-- Generation Time: Dec 18, 2018 at 10:46 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -93,7 +93,8 @@ CREATE TABLE `tblcatalogremove` (
 INSERT INTO `tblcatalogremove` (`intItemID`, `strTeacherID`) VALUES
 (1, 'grant'),
 (2, 'Tim'),
-(3, 'Stan');
+(3, 'Stan'),
+(3, 'grant');
 
 -- --------------------------------------------------------
 
