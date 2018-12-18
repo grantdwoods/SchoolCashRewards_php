@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2018 at 10:46 PM
+-- Generation Time: Dec 19, 2018 at 12:01 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -40,9 +40,9 @@ CREATE TABLE `tblcalendar` (
 --
 
 INSERT INTO `tblcalendar` (`intSchoolID`, `strTeacherID`, `strWeekday`, `strTime`) VALUES
-(1, 'grant', 'Friday', '14:30'),
+(1, 'Jay', 'Monday', '14:45'),
 (1, 'Stan', 'Monday', '14:30'),
-(1, 'Jay', 'Monday', '14:45');
+(1, 'grant', 'Friday', '14:30');
 
 -- --------------------------------------------------------
 
@@ -134,6 +134,13 @@ CREATE TABLE `tblhistory` (
   `intAmount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `tblhistory`
+--
+
+INSERT INTO `tblhistory` (`intSchoolID`, `strStudentID`, `intItemID`, `dtmDate`, `strComment`, `intAmount`) VALUES
+(1, 'Bobby', 90007, '2018-12-12 00:00:00', 'Harro', -10);
+
 -- --------------------------------------------------------
 
 --
@@ -218,10 +225,10 @@ CREATE TABLE `tblteacher` (
 --
 
 INSERT INTO `tblteacher` (`intSchoolID`, `strTeacherID`, `strFirstName`, `strLastName`) VALUES
+(1, 'Jay', 'Jay', 'Jackson'),
 (1, 'Stan', 'stan', 'man'),
 (1, 'Tim', 'Tim', 'Timn'),
-(1, 'grant', 'grant', 'woods'),
-(2, 'teacher1', 'teacher', 'one');
+(1, 'grant', 'grant', 'woods');
 
 -- --------------------------------------------------------
 
@@ -252,7 +259,8 @@ INSERT INTO `tblteaches` (`strTeacherID`, `intClassID`) VALUES
 -- Indexes for table `tblcalendar`
 --
 ALTER TABLE `tblcalendar`
-  ADD PRIMARY KEY (`intSchoolID`,`strWeekday`,`strTime`);
+  ADD PRIMARY KEY (`intSchoolID`,`strWeekday`,`strTime`),
+  ADD KEY `strTeacherID` (`strTeacherID`);
 
 --
 -- Indexes for table `tblcatalog`
@@ -264,7 +272,8 @@ ALTER TABLE `tblcatalog`
 -- Indexes for table `tblcatalogremove`
 --
 ALTER TABLE `tblcatalogremove`
-  ADD PRIMARY KEY (`intItemID`,`strTeacherID`);
+  ADD PRIMARY KEY (`intItemID`,`strTeacherID`),
+  ADD KEY `strTeacherID` (`strTeacherID`);
 
 --
 -- Indexes for table `tblclass`
@@ -276,7 +285,8 @@ ALTER TABLE `tblclass`
 -- Indexes for table `tblhistory`
 --
 ALTER TABLE `tblhistory`
-  ADD PRIMARY KEY (`strStudentID`,`dtmDate`);
+  ADD PRIMARY KEY (`strStudentID`,`dtmDate`),
+  ADD KEY `intSchoolID` (`intSchoolID`);
 
 --
 -- Indexes for table `tblschool`
@@ -288,7 +298,8 @@ ALTER TABLE `tblschool`
 -- Indexes for table `tblstudent`
 --
 ALTER TABLE `tblstudent`
-  ADD PRIMARY KEY (`strStudentID`);
+  ADD PRIMARY KEY (`strStudentID`),
+  ADD KEY `intSchoolID` (`intSchoolID`);
 
 --
 -- Indexes for table `tbltakes`
@@ -300,13 +311,74 @@ ALTER TABLE `tbltakes`
 -- Indexes for table `tblteacher`
 --
 ALTER TABLE `tblteacher`
-  ADD PRIMARY KEY (`strTeacherID`);
+  ADD PRIMARY KEY (`strTeacherID`),
+  ADD KEY `intSchoolID` (`intSchoolID`);
 
 --
 -- Indexes for table `tblteaches`
 --
 ALTER TABLE `tblteaches`
   ADD PRIMARY KEY (`strTeacherID`,`intClassID`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tblcalendar`
+--
+ALTER TABLE `tblcalendar`
+  ADD CONSTRAINT `tblcalendar_ibfk_1` FOREIGN KEY (`strTeacherID`) REFERENCES `tblteacher` (`strTeacherID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tblcalendar_ibfk_2` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblcatalog`
+--
+ALTER TABLE `tblcatalog`
+  ADD CONSTRAINT `tblcatalog_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblcatalogremove`
+--
+ALTER TABLE `tblcatalogremove`
+  ADD CONSTRAINT `tblcatalogremove_ibfk_1` FOREIGN KEY (`strTeacherID`) REFERENCES `tblteacher` (`strTeacherID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblclass`
+--
+ALTER TABLE `tblclass`
+  ADD CONSTRAINT `tblclass_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblhistory`
+--
+ALTER TABLE `tblhistory`
+  ADD CONSTRAINT `tblhistory_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tblhistory_ibfk_2` FOREIGN KEY (`strStudentID`) REFERENCES `tblstudent` (`strStudentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblstudent`
+--
+ALTER TABLE `tblstudent`
+  ADD CONSTRAINT `tblstudent_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbltakes`
+--
+ALTER TABLE `tbltakes`
+  ADD CONSTRAINT `tbltakes_ibfk_1` FOREIGN KEY (`strStudentID`) REFERENCES `tblstudent` (`strStudentID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblteacher`
+--
+ALTER TABLE `tblteacher`
+  ADD CONSTRAINT `tblteacher_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tblteaches`
+--
+ALTER TABLE `tblteaches`
+  ADD CONSTRAINT `tblteaches_ibfk_1` FOREIGN KEY (`strTeacherID`) REFERENCES `tblteacher` (`strTeacherID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
