@@ -38,11 +38,6 @@ function postRequest($claim)
         http_response_code (400);
 }
 
-function putRequest($claim)
-{
-    //Only delete/add?
-}
-
 function deleteRequest($claim)
 {
     $str = file_get_contents('php://input');
