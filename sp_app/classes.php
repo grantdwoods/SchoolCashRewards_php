@@ -11,14 +11,14 @@ function getRequest($claim)
     {
         $classID = filter_input(INPUT_GET, 'classID');
         $sql = 'SELECT strClassName, intClassCoupons  FROM tblclass '
-                . 'WHERE intSchoolID = ? AND intClassID = ?';
+             . 'WHERE intSchoolID = ? AND intClassID = ?';
         $results = PDOexecuteQuery($sql, [$claim['schoolID'], $classID]);
         verifyGetResults($results);
     }
     else
     {
         $sql = 'SELECT strClassName, intClassCoupons FROM tblclass'
-                . ' WHERE intSchoolID = ?';
+             . ' WHERE intSchoolID = ?';
         verifyGetResults(PDOexecuteQuery($sql, [$claim['schoolID']]));
     }
 }
@@ -30,7 +30,7 @@ function postRequest($claim)
     if(isset($classID,$className))
     {
         $sql = 'INSERT INTO tblclass(intSchoolID, intClassID, strClassName, '
-                . 'intClassCoupons) VALUES (?,?,?,?)';
+             . 'intClassCoupons) VALUES (?,?,?,?)';
         $varArray = [$claim['schoolID'], $classID, $className, 0];
         verifyPostResults(PDOexecuteNonQuery($sql, $varArray));
     }
@@ -50,7 +50,7 @@ function putRequest($claim)
         if($newCount)
         {
             $sql = 'UPDATE tblclass SET intClassCoupons = ? '
-                    . 'WHERE intClassID = ? AND intSchoolID = ?';
+                 . 'WHERE intClassID = ? AND intSchoolID = ?';
             $varArray = [$newCount, $putVars['classID'], $claim['schoolID']];
             verifyPutResults(PDOexecuteNonQuery($sql, $varArray));
         }
@@ -87,7 +87,7 @@ function addCoupons($currentCount, $delta)
 function getCurrentCounponCount($classID, $schoolID)
 {
     $sql = 'SELECT intClassCoupons FROM tblclass WHERE intclassID = ?'
-            . ' AND intSchoolID = ?';
+         . ' AND intSchoolID = ?';
     $results = PDOexecuteQuery($sql, [$classID, $schoolID]);
     if(isset($results[0]['intClassCoupons']))
         return $results[0]['intClassCoupons'];

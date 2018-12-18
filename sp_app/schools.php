@@ -29,7 +29,7 @@ function postRequest($claim)
     if($schoolName && $cashName)
     {
         $sql = 'INSERT INTO tblschool (intSchoolID, strSchoolName, strCashName)'
-                . ' VALUES (?,?,?)';
+             . ' VALUES (?,?,?)';
         $results = PDOexecuteNonQuery($sql, [$schoolID, $schoolName, $cashName]);
         verifyPostResults($results);
     }
@@ -44,7 +44,7 @@ function putRequest($claim)
     if(isset($putVars['schoolID'], $putVars['schoolName'], $putVars['cashName']))
     {
         $sql = 'UPDATE tblschool SET strSchoolName = ?, strCashName = ? WHERE'
-                . ' intSchoolID = ?';
+             . ' intSchoolID = ?';
         $varArray = [$putVars['schoolName'], $putVars['cashName'], $putVars['schoolID']];
         verifyPutResults(PDOexecuteNonQuery($sql, $varArray));
     }

@@ -11,7 +11,7 @@ function getRequest($claim)
     if($userID)
     {
         $sql = 'SELECT strFirstName, StrLastName, intCoupons from tblstudent'
-                . ' WHERE strStudentID = ?';
+             . ' WHERE strStudentID = ?';
         verifyGetResults(PDOexecuteQuery($sql, [$userID]));
     }
     else
@@ -28,7 +28,7 @@ function postRequest($claim)
     if($schoolID && $userID && $firstName && $lastName)
     {
         $sql = 'INSERT INTO tblstudent (intSchoolID, strStudentID, strFirstName,'
-                . ' strLastName, intCoupons) VALUES (?,?,?,?,?)';
+             . ' strLastName, intCoupons) VALUES (?,?,?,?,?)';
         $results = PDOexecuteNonQuery($sql, [$schoolID, $userID, $firstName, $lastName, 0]);
         verifyPostResults($results);
     }

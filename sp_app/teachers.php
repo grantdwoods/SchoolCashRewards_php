@@ -34,7 +34,7 @@ function postRequest($claim)
     if($firstName && $lastName)
     {
         $sql = 'INSERT INTO tblteacher (intSchoolID, strTeacherID, strFirstName, strLastName)'
-                . 'VALUES (?,?,?,?)';
+             . 'VALUES (?,?,?,?)';
         $results = PDOexecuteNonQuery($sql, [$schoolID, $userID, $firstName, $lastName]);
         verifyPostResults($results);
     }
