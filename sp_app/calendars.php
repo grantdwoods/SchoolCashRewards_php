@@ -45,5 +45,16 @@ function putRequest($claim)
 
 function deleteRequest($claim)
 {
-   
+    $str = file_get_contents('php://input');
+    $deleteVars = json_decode($str,true);
+    if(isset($deleteVars['weekDay'], $deleteVars['time']))
+    {
+         $sql = 'DELETE from tblcalendar WHERE intSchoolID = ? AND strWeekday = ?'
+              . ' AND strTime = ?';
+         $varArray = [$claim['schoolID'], $deleteVars['weekDay'], $deleteVars['time']];
+         verifyDeleteResults(PDOexecuteNonQuery($sql, $varArray));
+         
+    }
+    else
+        http_response_code (400);
 }
