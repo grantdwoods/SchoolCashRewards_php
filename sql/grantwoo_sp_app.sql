@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2018 at 11:54 PM
+-- Generation Time: Dec 18, 2018 at 10:10 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -40,9 +40,9 @@ CREATE TABLE `tblcalendar` (
 --
 
 INSERT INTO `tblcalendar` (`intSchoolID`, `strTeacherID`, `strWeekday`, `strTime`) VALUES
-(10000, 'A24DD', 'Friday', '2:30'),
-(10000, 'AAAAA', 'Monday', '2:30'),
-(10000, 'ABE2B', 'Monday', '2:45');
+(1, 'grant', 'Friday', '14:30'),
+(1, 'Stan', 'Monday', '14:30'),
+(1, 'Jay', 'Monday', '14:45');
 
 -- --------------------------------------------------------
 
@@ -64,17 +64,16 @@ CREATE TABLE `tblcatalog` (
 --
 
 INSERT INTO `tblcatalog` (`intSchoolID`, `intItemID`, `intCost`, `strDescription`, `strImageLocation`, `strTeacherID`) VALUES
-(10000, 90001, 20, 'Gum', '..', 'STD'),
-(10000, 90002, 40, 'Bracelet', '..', 'STD'),
-(10000, 90003, 100, 'Toy Car', '..', 'STD'),
-(10000, 90004, 5, 'Pencil', '..', 'STD'),
-(10000, 90005, 10, 'Eraser', '..', 'STD'),
-(10000, 90006, 1000, 'Skip Day', '..', 'AAAAA'),
-(10000, 90007, 500, 'Nap For Hour', '..', 'AAAAA'),
-(10000, 90008, 300, 'Extra Credit', '..', 'ABE2B'),
-(10000, 90009, 200, 'iPod For Day', '..', 'ABE2B'),
-(10000, 90010, 200, 'Recess', '..', 'A24DD'),
-(10000, 90011, 600, 'Food In Class', '..', 'A24DD');
+(1, 1, 20, 'Gum', '..', 'STD'),
+(1, 2, 40, 'Bracelet', '..', 'STD'),
+(1, 3, 100, 'Toy Car', '..', 'STD'),
+(1, 4, 5, 'Pencil', '..', 'STD'),
+(1, 5, 10, 'Eraser', '..', 'STD'),
+(1, 6, 500, 'Nap For Hour', '..', 'grant'),
+(1, 7, 300, 'Extra Credit', '..', 'Tim'),
+(1, 8, 200, 'iPod For Day', '..', 'grant'),
+(1, 9, 200, 'Recess', '..', 'Jay'),
+(1, 10, 600, 'Food In Class', '..', 'Stan');
 
 -- --------------------------------------------------------
 
@@ -92,9 +91,9 @@ CREATE TABLE `tblcatalogremove` (
 --
 
 INSERT INTO `tblcatalogremove` (`intItemID`, `strTeacherID`) VALUES
-(90001, 'AAAAA'),
-(90002, 'ABE2B'),
-(90003, 'A24DD');
+(1, 'grant'),
+(2, 'Tim'),
+(3, 'Stan');
 
 -- --------------------------------------------------------
 
@@ -129,8 +128,9 @@ CREATE TABLE `tblhistory` (
   `intSchoolID` int(11) NOT NULL,
   `strStudentID` varchar(30) COLLATE utf8_bin NOT NULL,
   `intItemID` int(11) NOT NULL,
-  `dtmDate` date NOT NULL,
-  `strComment` text COLLATE utf8_bin
+  `dtmDate` datetime NOT NULL,
+  `strComment` text COLLATE utf8_bin,
+  `intAmount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------

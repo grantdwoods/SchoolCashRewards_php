@@ -254,7 +254,7 @@
 					"response": []
 				},
 				{
-					"name": "Class by claim teacher",
+					"name": "By form Class by claim teacher",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -297,7 +297,7 @@
 					"response": []
 				},
 				{
-					"name": "Class by other teacher",
+					"name": "By form Class by other teacher",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -463,7 +463,7 @@
 			"name": "tblTakes",
 			"item": [
 				{
-					"name": "With JSON",
+					"name": "By JSON",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -866,7 +866,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost/SchoolCashRewards_php/sp_app/schools.php",
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/schools.php?schoolID=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -875,6 +875,12 @@
 								"SchoolCashRewards_php",
 								"sp_app",
 								"schools.php"
+							],
+							"query": [
+								{
+									"key": "schoolID",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -997,7 +1003,7 @@
 			"name": "tblClass",
 			"item": [
 				{
-					"name": "Classes by  claim school ID",
+					"name": "By  claim schoolID",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1122,6 +1128,153 @@
 								"SchoolCashRewards_php",
 								"sp_app",
 								"classes.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblcalendar",
+			"item": [
+				{
+					"name": "By claim schoolID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/calendars.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"calendars.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By userID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/calendars.php?userID=grant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"calendars.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "grant"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userID",
+									"value": "grant",
+									"type": "text"
+								},
+								{
+									"key": "weekDay",
+									"value": "Tuesday",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "10:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/calendars.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"calendars.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"weekDay\": \"Tuesday\",\n\t\"time\": \"10:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/calendars.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"calendars.php"
 							]
 						}
 					},
