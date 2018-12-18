@@ -8,8 +8,8 @@ validateRequest();
 function getRequest($claim)
 {
     $schoolID = '';
-    if(isset($_POST['schoolID']))
-        $schoolID = filter_input(INPUT_POST, 'schoolID', FILTER_SANITIZE_STRING);
+    if(isset($_GET['schoolID']))
+        $schoolID = filter_input(INPUT_GET, 'schoolID', FILTER_SANITIZE_STRING);
     else
         $schoolID = $claim['schoolID'];
     if($schoolID)
