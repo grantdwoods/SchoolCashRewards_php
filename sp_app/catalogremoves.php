@@ -36,13 +36,10 @@ function deleteRequest($claim)
    $str = file_get_contents('php://input');
    $deleteVars = json_decode($str, true);
    
-   if(isset($deleteVars['userID'], $deleteVars['itemID']))
+   if(isset($deleteVars['itemID']))
    {
-       
-   }
-   elseif(isset($deleteVars['userID']))
-   {
-       
+       $sql = 'DELETE FROM tblcatalogremove WHERE intItemID = ? and strTeacherID = ?';
+       PDOexecuteNonQuery($sql, [$deleteVars['itemID'], $claim['userID']]);
    }
    else
        http_response_code (400);
