@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2018 at 12:01 AM
+-- Generation Time: Jan 03, 2019 at 09:50 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -128,18 +128,22 @@ INSERT INTO `tblclass` (`intSchoolID`, `intClassID`, `strClassName`, `intClassCo
 CREATE TABLE `tblhistory` (
   `intSchoolID` int(11) NOT NULL,
   `strStudentID` varchar(30) COLLATE utf8_bin NOT NULL,
-  `intItemID` int(11) NOT NULL,
   `dtmDate` datetime NOT NULL,
   `strComment` text COLLATE utf8_bin,
-  `intAmount` int(11) NOT NULL
+  `intAmount` int(11) NOT NULL,
+  `strTeacherID` varchar(30) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tblhistory`
 --
 
-INSERT INTO `tblhistory` (`intSchoolID`, `strStudentID`, `intItemID`, `dtmDate`, `strComment`, `intAmount`) VALUES
-(1, 'Bobby', 90007, '2018-12-12 00:00:00', 'Harro', -10);
+INSERT INTO `tblhistory` (`intSchoolID`, `strStudentID`, `dtmDate`, `strComment`, `intAmount`, `strTeacherID`) VALUES
+(1, 'Bobby', '2018-12-12 00:00:00', 'Harro', -10, 'grant'),
+(1, 'Jack', '2018-12-31 00:00:00', 'Cleaning the classroom tables', 100, 'grant'),
+(1, 'Jack', '2019-01-03 00:00:00', 'updated', -50, 'grant'),
+(1, 'Jack', '2019-01-03 00:00:02', 'Cleaning the classroom tables', 100, 'grant'),
+(1, 'Ryan', '2018-10-23 00:00:02', 'Cleaning', 100, 'grant');
 
 -- --------------------------------------------------------
 
@@ -226,6 +230,7 @@ CREATE TABLE `tblteacher` (
 
 INSERT INTO `tblteacher` (`intSchoolID`, `strTeacherID`, `strFirstName`, `strLastName`) VALUES
 (1, 'Jay', 'Jay', 'Jackson'),
+(1, 'STD', 'n/a', 'n/a'),
 (1, 'Stan', 'stan', 'man'),
 (1, 'Tim', 'Tim', 'Timn'),
 (1, 'grant', 'grant', 'woods');
@@ -266,7 +271,8 @@ ALTER TABLE `tblcalendar`
 -- Indexes for table `tblcatalog`
 --
 ALTER TABLE `tblcatalog`
-  ADD PRIMARY KEY (`intSchoolID`,`intItemID`);
+  ADD PRIMARY KEY (`intSchoolID`,`intItemID`),
+  ADD KEY `strTeacherID` (`strTeacherID`);
 
 --
 -- Indexes for table `tblcatalogremove`
@@ -335,7 +341,8 @@ ALTER TABLE `tblcalendar`
 -- Constraints for table `tblcatalog`
 --
 ALTER TABLE `tblcatalog`
-  ADD CONSTRAINT `tblcatalog_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tblcatalog_ibfk_1` FOREIGN KEY (`intSchoolID`) REFERENCES `tblschool` (`intSchoolID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tblcatalog_ibfk_2` FOREIGN KEY (`strTeacherID`) REFERENCES `tblteacher` (`strTeacherID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tblcatalogremove`

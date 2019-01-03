@@ -1136,7 +1136,7 @@
 			]
 		},
 		{
-			"name": "tblcalendar",
+			"name": "tblCalendar",
 			"item": [
 				{
 					"name": "By claim schoolID",
@@ -1275,6 +1275,286 @@
 								"SchoolCashRewards_php",
 								"sp_app",
 								"calendars.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblCatalogRemove",
+			"item": [
+				{
+					"name": "By userID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogremoves.php?userID=grant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogremoves.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "grant"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userID",
+									"value": "grant",
+									"type": "text"
+								},
+								{
+									"key": "itemID",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogremoves.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogremoves.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblHistory",
+			"item": [
+				{
+					"name": "By form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "amount",
+									"value": "100\n",
+									"type": "text"
+								},
+								{
+									"key": "userID",
+									"value": "Jack",
+									"type": "text"
+								},
+								{
+									"key": "dateTime",
+									"value": "2019-1-3 00:00:02",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Cleaning the classroom tables",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/history.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"history.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By userID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/history.php?userID=Jack",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"history.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "Jack"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By ID & dateTime",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/history.php?userID=Jack&dateTime=2018-12-31 00:00:00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"history.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "Jack"
+								},
+								{
+									"key": "dateTime",
+									"value": "2018-12-31 00:00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON userID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\":\"Ryan\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/history.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"history.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON, change comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userID\":\"Jack\",\n\t\"dateTime\":\"2019-01-03 00:00:00\",\n\t\"comment\":\"updated\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/history.php?userID=Jack",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"history.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "Jack"
+								}
 							]
 						}
 					},
