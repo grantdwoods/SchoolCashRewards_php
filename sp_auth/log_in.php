@@ -3,8 +3,9 @@ include 'authDBconn.php';
 require_once '../vendor/autoload.php';
 use Firebase\JWT\JWT;
 
-$userID = filter_input(INPUT_POST, 'userID');
-$password = filter_input(INPUT_POST, 'passWord');
+$userID = filter_input(INPUT_POST, 'userID', FILTER_SANITIZE_STRING);
+$password = filter_input(INPUT_POST, 'passWord', FILTER_SANITIZE_STRING);
+
 if($userID && $password)
 {
     $verify = verifyUser($userID,$password);

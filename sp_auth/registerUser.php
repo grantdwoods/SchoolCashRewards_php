@@ -8,10 +8,10 @@ else
 
 function processPostRequest()
 {
-    $userID = filter_input(INPUT_POST, 'userID');
-    $password = filter_input(INPUT_POST, 'password');
-    $role = filter_input(INPUT_POST, 'role');
-    $schoolID = filter_input(INPUT_POST, 'schoolID');
+    $userID = filter_input(INPUT_POST, 'userID', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
+    $schoolID = filter_input(INPUT_POST, 'schoolID', FILTER_SANITIZE_STRING);
  
     if($userID && $password && $role && $schoolID)
     {
