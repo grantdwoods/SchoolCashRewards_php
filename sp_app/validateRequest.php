@@ -6,7 +6,7 @@ function validateRequest()
     $claim = verifyToken();
     if($claim)
     {
-        filterOptions($claim);   
+        filterOptions($claim); 
     }
     else
         http_response_code (401);
