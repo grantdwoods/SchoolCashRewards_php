@@ -20,10 +20,15 @@ if($userID && $password)
         http_response_code (200);
     }
     else
-      http_response_code (400);
+    {   
+      http_response_code (401);
+      echo json_encode(array('err-message'=> 'Incorrect username or password.'));
+    }
 }
 else
-     http_response_code(400);
+{
+      http_response_code (400);
+}
 
 function verifyUser($userID, $password)
 {
