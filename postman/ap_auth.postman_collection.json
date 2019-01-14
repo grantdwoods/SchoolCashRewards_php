@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "4e469572-d599-45e1-be0b-516050a7dcde",
-		"name": "ap_auth",
+		"name": "sp_auth",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -26,11 +26,12 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost/SchoolCashRewards_php/sp_auth/log_in.php",
+					"raw": "http://localhost:/SchoolCashRewards_php/sp_auth/log_in.php",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"localhost:"
 					],
+					"port": "",
 					"path": [
 						"SchoolCashRewards_php",
 						"sp_auth",
