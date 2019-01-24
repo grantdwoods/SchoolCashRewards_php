@@ -18,9 +18,14 @@ function processPostRequest()
         if(!checkForExistingUser($userID))
         {
             if(addUser($userID,$password,$role,$schoolID))
+            {
+                
                 http_response_code(201);
+            }
             else
-            http_response_code (500);
+            {
+                http_response_code (500);
+            }
         }  
         else
         {
@@ -29,7 +34,12 @@ function processPostRequest()
         }
     }
     else
+    {
         http_response_code(400);
+        echo json_encode(array('err-message'=>'Something went wrong. '
+            . 'Is your school code correct?'));
+    }
+        
 }
 function addUser($userID,$passWord,$role,$schoolID)
 {

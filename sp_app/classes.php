@@ -17,7 +17,7 @@ function getRequest($claim)
     }
     else
     {
-        $sql = 'SELECT strClassName, intClassCoupons FROM tblclass'
+        $sql = 'SELECT strClassName, intClassID, intClassCoupons FROM tblclass'
              . ' WHERE intSchoolID = ?';
         verifyGetResults(PDOexecuteQuery($sql, [$claim['schoolID']]));
     }

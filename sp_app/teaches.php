@@ -19,7 +19,7 @@ function getRequest($claim)
     if($teacher)
     {
         $results = PDOexecuteQuery($sql, [$teacher]);
-        checkGetResults($results);
+        verifyGetResults($results);
     }
     else
         http_response_code (400);
