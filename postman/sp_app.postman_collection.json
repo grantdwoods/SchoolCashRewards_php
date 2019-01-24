@@ -225,7 +225,7 @@
 							{
 								"key": "jwt",
 								"type": "text",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw"
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI"
 							}
 						],
 						"body": {
@@ -233,7 +233,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php?userID=AAAAA",
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/teaches.php?userID=Stan",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -246,7 +246,7 @@
 							"query": [
 								{
 									"key": "userID",
-									"value": "AAAAA"
+									"value": "Stan"
 								}
 							]
 						}
@@ -1361,6 +1361,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "By JSON",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"itemID\":\"3\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogremoves.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogremoves.php"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1554,6 +1584,84 @@
 								{
 									"key": "userID",
 									"value": "Jack"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tblCatalog",
+			"item": [
+				{
+					"name": "By teacherID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php?userID=grant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "grant"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By admin role",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "grant",
+									"disabled": true
 								}
 							]
 						}

@@ -25,13 +25,12 @@ function getRequest($claim)
 
 function postRequest($claim)
 {
-    $classID = filter_input(INPUT_POST, 'classID');
     $className = filter_input(INPUT_POST, 'className');
-    if(isset($classID,$className))
+    if(isset($className))
     {
-        $sql = 'INSERT INTO tblclass(intSchoolID, intClassID, strClassName, '
-             . 'intClassCoupons) VALUES (?,?,?,?)';
-        $varArray = [$claim['schoolID'], $classID, $className, 0];
+        $sql = 'INSERT INTO tblclass(intSchoolID, strClassName, '
+             . 'intClassCoupons) VALUES (?,?,?)';
+        $varArray = [$claim['schoolID'], $className, 0];
         verifyPostResults(PDOexecuteNonQuery($sql, $varArray));
     }
     else

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2019 at 09:50 PM
+-- Generation Time: Jan 24, 2019 at 10:28 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -40,7 +40,6 @@ CREATE TABLE `tblcalendar` (
 --
 
 INSERT INTO `tblcalendar` (`intSchoolID`, `strTeacherID`, `strWeekday`, `strTime`) VALUES
-(1, 'Jay', 'Monday', '14:45'),
 (1, 'Stan', 'Monday', '14:30'),
 (1, 'grant', 'Friday', '14:30');
 
@@ -72,8 +71,8 @@ INSERT INTO `tblcatalog` (`intSchoolID`, `intItemID`, `intCost`, `strDescription
 (1, 6, 500, 'Nap For Hour', '..', 'grant'),
 (1, 7, 300, 'Extra Credit', '..', 'Tim'),
 (1, 8, 200, 'iPod For Day', '..', 'grant'),
-(1, 9, 200, 'Recess', '..', 'Jay'),
-(1, 10, 600, 'Food In Class', '..', 'Stan');
+(1, 10, 600, 'Food In Class', '..', 'Stan'),
+(1, 11, 45, 'Nothing.', '...', 'grant');
 
 -- --------------------------------------------------------
 
@@ -117,7 +116,7 @@ INSERT INTO `tblclass` (`intSchoolID`, `intClassID`, `strClassName`, `intClassCo
 (1, 10, 'Class', 20),
 (1, 22, 'Tim\'s Class', 20),
 (1, 25, 'Stan\'s Class', 0),
-(1, 39, 'Jay\'s Class', 0);
+(1, 42, 'Jay\'s Class', 0);
 
 -- --------------------------------------------------------
 
@@ -184,8 +183,8 @@ CREATE TABLE `tblstudent` (
 
 INSERT INTO `tblstudent` (`intSchoolID`, `strStudentID`, `strFirstName`, `strLastName`, `intCoupons`) VALUES
 (1, 'Bobby', 'Bob', 'Babbin', 36),
-(1, 'Jack', 'Jackal', 'Jones', 0),
-(1, 'Jane', 'Plain', 'Jane', 0),
+(1, 'Jack', 'Jackal', 'Jones', 15),
+(1, 'Jane', 'Plain', 'Jane', 200),
 (1, 'Jill', 'Jillian', 'Jones', 0),
 (1, 'Ryan', 'Rayanson', 'Rhonin', 0);
 
@@ -229,7 +228,6 @@ CREATE TABLE `tblteacher` (
 --
 
 INSERT INTO `tblteacher` (`intSchoolID`, `strTeacherID`, `strFirstName`, `strLastName`) VALUES
-(1, 'Jay', 'Jay', 'Jackson'),
 (1, 'STD', 'n/a', 'n/a'),
 (1, 'Stan', 'stan', 'man'),
 (1, 'Tim', 'Tim', 'Timn'),
@@ -251,10 +249,7 @@ CREATE TABLE `tblteaches` (
 --
 
 INSERT INTO `tblteaches` (`strTeacherID`, `intClassID`) VALUES
-('Jay', 39),
-('Stan', 25),
-('Tim', 22),
-('grant', 10);
+('Stan', 25);
 
 --
 -- Indexes for dumped tables
@@ -272,6 +267,7 @@ ALTER TABLE `tblcalendar`
 --
 ALTER TABLE `tblcatalog`
   ADD PRIMARY KEY (`intSchoolID`,`intItemID`),
+  ADD UNIQUE KEY `intItemID` (`intItemID`),
   ADD KEY `strTeacherID` (`strTeacherID`);
 
 --
@@ -285,7 +281,8 @@ ALTER TABLE `tblcatalogremove`
 -- Indexes for table `tblclass`
 --
 ALTER TABLE `tblclass`
-  ADD PRIMARY KEY (`intSchoolID`,`intClassID`);
+  ADD PRIMARY KEY (`intSchoolID`,`intClassID`),
+  ADD UNIQUE KEY `intClassID` (`intClassID`);
 
 --
 -- Indexes for table `tblhistory`
@@ -325,6 +322,22 @@ ALTER TABLE `tblteacher`
 --
 ALTER TABLE `tblteaches`
   ADD PRIMARY KEY (`strTeacherID`,`intClassID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tblcatalog`
+--
+ALTER TABLE `tblcatalog`
+  MODIFY `intItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tblclass`
+--
+ALTER TABLE `tblclass`
+  MODIFY `intClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
