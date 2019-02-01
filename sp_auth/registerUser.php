@@ -12,14 +12,13 @@ function processPostRequest()
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
     $schoolID = filter_input(INPUT_POST, 'schoolID', FILTER_SANITIZE_STRING);
- 
+    
     if($userID && $password && $role && $schoolID)
     {
         if(!checkForExistingUser($userID))
         {
             if(addUser($userID,$password,$role,$schoolID))
             {
-                
                 http_response_code(201);
             }
             else
@@ -38,8 +37,7 @@ function processPostRequest()
         http_response_code(400);
         echo json_encode(array('err-message'=>'Something went wrong. '
             . 'Is your school code correct?'));
-    }
-        
+    }    
 }
 function addUser($userID,$passWord,$role,$schoolID)
 {

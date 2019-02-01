@@ -40,7 +40,9 @@ function postRequest($claim)
     if($teacher && $classID)
         verifyPostResults(PDOexecuteNonQuery($sql, [$teacher,$classID]));
     else
+    {
         http_response_code (400);
+    }
 }
 
 function putRequest($claim)
@@ -54,7 +56,9 @@ function putRequest($claim)
         verifyPutResults($results);
     }
     else
+    {
         http_response_code (400);
+    }
 }
 
 function deleteRequest($claim)
@@ -71,7 +75,9 @@ function deleteRequest($claim)
     elseif($deleteTeacher && !$deleteClass)
         deleteTeacherByID($deleteVars['userID']);
     else
+    {
         http_response_code (400);
+    }
 }
 
 function deleteSingleTeacherInClass($userID, $classID)

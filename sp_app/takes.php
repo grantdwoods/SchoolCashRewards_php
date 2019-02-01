@@ -10,8 +10,9 @@ function getRequest($claim)
     $classID = filter_input(INPUT_GET, 'classID', FILTER_SANITIZE_NUMBER_INT);
     if($classID)
     {
-        $sql = 'SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
-             . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?)';
+        $sql = 'SELECT strStudentID, strFirstName, strLastName, intCoupons FROM tblStudent WHERE strStudentID IN'
+                . '(SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
+             . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?))';
         $results = PDOexecuteQuery($sql, [$classID, $claim['schoolID']]);
         verifyGetResults($results);
     }
