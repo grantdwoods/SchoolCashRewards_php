@@ -547,16 +547,7 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
+						"body": {},
 						"url": {
 							"raw": "http://localhost/SchoolCashRewards_php/sp_app/takes.php?classID=10",
 							"protocol": "http",
@@ -1132,6 +1123,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "By classID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/classes.php?classID=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"classes.php"
+							],
+							"query": [
+								{
+									"key": "classID",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1663,6 +1690,213 @@
 									"value": "grant",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By form, teacher catalog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cost",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A thing.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By form, STD catalog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cost",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A thing in STD.",
+									"type": "text"
+								},
+								{
+									"key": "userID",
+									"value": "STD",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON, teacher catalog",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cost\":\"3000\",\n\t\"description\":\"UPDATED\",\n\t\"itemID\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON, STD catalog",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cost\":3000,\n\t\"description\":\"UPDATED STD\",\n\t\"itemID\":13,\n\t\"userID\":\"STD\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON, teacher catalog",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"itemID\":19\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "By JSON, STD catalog",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"itemID\":18,\n\t\"userID\":\"STD\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/catalogs.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"catalogs.php"
 							]
 						}
 					},
