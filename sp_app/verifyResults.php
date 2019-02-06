@@ -9,7 +9,7 @@ function verifyGetResults($results)
     }
     else
     {
-        http_response_code (200);
+        http_response_code (404);
         echo json_encode(array('err-message'=>'No results.'));
     } 
 }
@@ -38,7 +38,7 @@ function verifyDeleteResults($results)
         http_response_code (200);
     else
     {
-        http_response_code(200);
+        http_response_code(404);
         echo json_encode(array('err-message'=>'No changes.'));
     }
 }
