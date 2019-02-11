@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2019 at 10:28 PM
+-- Generation Time: Feb 10, 2019 at 07:32 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -72,7 +72,10 @@ INSERT INTO `tblcatalog` (`intSchoolID`, `intItemID`, `intCost`, `strDescription
 (1, 7, 300, 'Extra Credit', '..', 'Tim'),
 (1, 8, 200, 'iPod For Day', '..', 'grant'),
 (1, 10, 600, 'Food In Class', '..', 'Stan'),
-(1, 11, 45, 'Nothing.', '...', 'grant');
+(1, 11, 45, 'Nothing.', '...', 'grant'),
+(1, 12, 3000, 'UPDATED', NULL, 'grant'),
+(1, 13, 3000, 'UPDATED STD', NULL, 'STD'),
+(1, 17, 10, 'A thing in STD.', NULL, 'STD');
 
 -- --------------------------------------------------------
 
@@ -331,7 +334,7 @@ ALTER TABLE `tblteaches`
 -- AUTO_INCREMENT for table `tblcatalog`
 --
 ALTER TABLE `tblcatalog`
-  MODIFY `intItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `intItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tblclass`

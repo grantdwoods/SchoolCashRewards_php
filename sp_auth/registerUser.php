@@ -3,8 +3,11 @@
  
 if($_SERVER['REQUEST_METHOD'] === 'POST')
     processPostRequest();
-else
-    http_response_code (501);
+else{
+     http_response_code (501);
+     echo json_encode(array('err-message'=>'Unsupported HTTP verb.'));
+}
+   
 
 function processPostRequest()
 {
@@ -12,7 +15,7 @@ function processPostRequest()
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
     $schoolID = filter_input(INPUT_POST, 'schoolID', FILTER_SANITIZE_STRING);
-    
+
     if($userID && $password && $role && $schoolID)
     {
         if(!checkForExistingUser($userID))
@@ -24,6 +27,8 @@ function processPostRequest()
             else
             {
                 http_response_code (500);
+                echo json_encode(array('err-message'=>'There was an '
+                    . 'unknown error in processPostRequest().'));
             }
         }  
         else
