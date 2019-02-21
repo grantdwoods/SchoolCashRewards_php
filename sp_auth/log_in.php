@@ -16,7 +16,8 @@ if($userID && $password)
                           'role' => $verify['role'],
                           'schoolID' => $verify['schoolID']);
         $jwt = JWT::encode($payload, $key);
-        echo json_encode(array('jwt'=> $jwt, 'role' => $verify['role']));
+        echo json_encode(array('jwt'=> $jwt, 'role' => $verify['role'], 
+            'userID'=> $userID));
         http_response_code (200);
     }
     else
