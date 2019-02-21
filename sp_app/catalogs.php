@@ -11,7 +11,7 @@ function getRequest($claim)
     if($userID)
     {
         $sql = 'SELECT * FROM tblcatalog WHERE strTeacherID = ? '
-             . 'OR strTeacherID = \'STD\' AND  intSchoolID = ? AND '
+             . 'OR strTeacherID = \'STD\''.$claim['schoolID'].'AND  intSchoolID = ? AND '
              . 'intItemID NOT IN (SELECT intItemID FROM '
              . 'tblcatalogremove WHERE strTeacherID = ?)';
         verifyGetResults(PDOexecuteQuery($sql, [$userID, $claim['schoolID'], $userID]));     

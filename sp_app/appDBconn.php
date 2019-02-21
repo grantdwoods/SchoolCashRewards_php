@@ -58,10 +58,10 @@ function PDOexecuteQuery($sql, $varArray)
 
 function executeSQL($varArray,$pdo,$sql)
 {
-    if (count($varArray) == 0) 
+    if(!isset($varArray) || count($varArray) == 0) 
     {
         $stmt = $pdo->query($sql);
-    } 
+    }
     else 
     {
         $stmt = $pdo->prepare($sql);

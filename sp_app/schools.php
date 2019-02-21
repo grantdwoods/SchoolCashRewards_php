@@ -30,8 +30,12 @@ function postRequest($claim)
     {
         $sql = 'INSERT INTO tblschool (intSchoolID, strSchoolName, strCashName)'
              . ' VALUES (?,?,?)';
-        $results = PDOexecuteNonQuery($sql, [$schoolID, $schoolName, $cashName]);
-        verifyPostResults($results);
+        PDOexecuteNonQuery($sql, [$schoolID, $schoolName, $cashName]);
+        setUpSTDaccount($schoolID);
+        setUpDefaultCatalog($schoolID); 
+        
+        http_response_code(201);
+        
     }
     else
         http_response_code (400);
@@ -65,4 +69,33 @@ function deleteRequest($claim)
     }
     else
         http_response_code (400);
+}
+function setUpSTDaccount($schoolID)
+{
+    $sql = 'INSERT INTO tblteacher (intSchoolID, strTeacherID, strFirstName, '
+            . 'strLastName) VALUES (?,?,?,?)';
+    PDOexecuteNonQuery($sql, [$schoolID, 'STD'.$schoolID, 'n/a', 'n/a']);
+}
+
+function setUpDefaultCatalog($schoolID)
+{
+    $std = "STD".$schoolID;
+    $sql = "INSERT INTO tblcatalog (intSchoolID, intCost, strDescription, "
+            . "strTeacherID) VALUES "
+            . "('$schoolID', '5', 'pencils/pens',  '$std'),"
+            . "('$schoolID', '5', 'crayons',  '$std'),"
+            . "('$schoolID', '50', 'Match Box',  '$std'),"
+            . "('$schoolID', '500', 'Connect Four',  '$std'),"
+            . "('$schoolID', '750', 'Battleship',  '$std'),"
+            . "('$schoolID', '250', 'UNO',  '$std'),"
+            . "('$schoolID', '300', 'Puzzles',  '$std'),"
+            . "('$schoolID', '250', 'Farkle',  '$std'),"
+            . "('$schoolID', '25', 'Goldfish crackers',  '$std'),"
+            . "('$schoolID', '25', 'Rice Crispy Treat',  '$std'),"
+            . "('$schoolID', '150', 'Lunch with teacher',  '$std'),"
+            . "('$schoolID', '200', 'Teacher chair  for 1 day',  '$std'),"
+            . "('$schoolID', '50', 'Wear a hat',  '$std'),"
+            . "('$schoolID', '100', 'Skip a homework page',  '$std'),"
+            . "('$schoolID', '50', '10min extra computer time',  '$std') ";
+    return PDOexecuteNonQuery($sql, null);
 }
