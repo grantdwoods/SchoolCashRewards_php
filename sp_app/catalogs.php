@@ -8,18 +8,26 @@ validateRequest();
 function getRequest($claim)
 {
     $userID = filter_input(INPUT_GET, 'userID', FILTER_SANITIZE_STRING);
-    if($userID)
+    $getCatalogOwnerList = filter_input(INPUT_GET, 'getOwners', FILTER_SANITIZE_STRING);
+    if($getCatalogOwnerList == 'true')
+    { 
+       $sql = 'SELECT strLastName, strFirstName, strTeacherID FROM tblTeacher '
+               . 'WHERE strTeacherID IN (select strTeacherID '
+               . 'FROM tblcatalog WHERE intSchoolID = ?)';
+       verifyGetResults(PDOexecuteQuery($sql, [$claim['schoolID']]));
+    }
+    elseif($userID)
     {
         $sql = 'SELECT * FROM tblcatalog WHERE strTeacherID = ? '
              . 'OR strTeacherID = \'STD\''.$claim['schoolID'].'AND  intSchoolID = ? AND '
              . 'intItemID NOT IN (SELECT intItemID FROM '
-             . 'tblcatalogremove WHERE strTeacherID = ?)';
+             . 'tblcatalogremove WHERE strTeacherID = ?)ORDER BY intCost';
         verifyGetResults(PDOexecuteQuery($sql, [$userID, $claim['schoolID'], $userID]));     
     }
     elseif(!$userID && ($claim['role'] === 'a'))
     { 
         $sql = 'SELECT * from tblcatalog WHERE strTeacherID = \'STD\' AND '
-             . 'intSchoolID = ?';
+             . 'intSchoolID = ? ORDER BY intCost';
         verifyGetResults(PDOexecuteQuery($sql, [$claim['schoolID']]));
     }
     else

@@ -74,7 +74,7 @@ function setUpSTDaccount($schoolID)
 {
     $sql = 'INSERT INTO tblteacher (intSchoolID, strTeacherID, strFirstName, '
             . 'strLastName) VALUES (?,?,?,?)';
-    PDOexecuteNonQuery($sql, [$schoolID, 'STD'.$schoolID, 'n/a', 'n/a']);
+    PDOexecuteNonQuery($sql, [$schoolID, 'STD'.$schoolID, 'Catalog', 'Standard']);
 }
 
 function setUpDefaultCatalog($schoolID)

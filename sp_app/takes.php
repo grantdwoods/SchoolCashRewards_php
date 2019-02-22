@@ -11,8 +11,8 @@ function getRequest($claim)
     if($classID)
     {
         $sql = 'SELECT strStudentID, strFirstName, strLastName FROM tblStudent WHERE strStudentID IN'
-                . '(SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
-             . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?))';
+            . '(SELECT strStudentID FROM tbltakes WHERE intClassID = ? AND intClassID IN'
+            . '(SELECT intClassID FROM tblclass WHERE intSchoolID = ?))';
         $results = PDOexecuteQuery($sql, [$classID, $claim['schoolID']]);
         verifyGetResults($results);
     }
