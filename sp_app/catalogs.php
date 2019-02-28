@@ -18,11 +18,13 @@ function getRequest($claim)
     }
     elseif($userID)
     {
+        $std= 'STD'.$claim['schoolID'];
+        
         $sql = 'SELECT * FROM tblcatalog WHERE strTeacherID = ? '
-             . 'OR strTeacherID = \'STD\''.$claim['schoolID'].'AND  intSchoolID = ? AND '
+             . 'OR strTeacherID = ? AND intSchoolID = ? AND '
              . 'intItemID NOT IN (SELECT intItemID FROM '
              . 'tblcatalogremove WHERE strTeacherID = ?)ORDER BY intCost';
-        verifyGetResults(PDOexecuteQuery($sql, [$userID, $claim['schoolID'], $userID]));     
+        verifyGetResults(PDOexecuteQuery($sql, [$userID, $std, $claim['schoolID'], $userID]));     
     }
     elseif(!$userID && ($claim['role'] === 'a'))
     { 
