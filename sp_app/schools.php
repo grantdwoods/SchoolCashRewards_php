@@ -79,23 +79,24 @@ function setUpSTDaccount($schoolID)
 
 function setUpDefaultCatalog($schoolID)
 {
+    $url='http://localhost/SchoolCashRewards_php/catalogImages/';
     $std = "STD".$schoolID;
     $sql = "INSERT INTO tblcatalog (intSchoolID, intCost, strDescription, "
-            . "strTeacherID) VALUES "
-            . "('$schoolID', '5', 'pencils/pens',  '$std'),"
-            . "('$schoolID', '5', 'crayons',  '$std'),"
-            . "('$schoolID', '50', 'Match Box',  '$std'),"
-            . "('$schoolID', '500', 'Connect Four',  '$std'),"
-            . "('$schoolID', '750', 'Battleship',  '$std'),"
-            . "('$schoolID', '250', 'UNO',  '$std'),"
-            . "('$schoolID', '300', 'Puzzles',  '$std'),"
-            . "('$schoolID', '250', 'Farkle',  '$std'),"
-            . "('$schoolID', '25', 'Goldfish crackers',  '$std'),"
-            . "('$schoolID', '25', 'Rice Crispy Treat',  '$std'),"
-            . "('$schoolID', '150', 'Lunch with teacher',  '$std'),"
-            . "('$schoolID', '200', 'Teacher chair  for 1 day',  '$std'),"
-            . "('$schoolID', '50', 'Wear a hat',  '$std'),"
-            . "('$schoolID', '100', 'Skip a homework page',  '$std'),"
-            . "('$schoolID', '50', '10min extra computer time',  '$std') ";
+            . "strImageLocation, strTeacherID) VALUES "
+            . "('$schoolID', '5', 'pencils/pens', 'http://localhost/SchoolCashRewards_php/catalogImages/pens-and-pencils.jpg' ,'$std'),"
+            . "('$schoolID', '5', 'crayons', 'http://localhost/SchoolCashRewards_php/catalogImages/crayons.jpg' ,'$std'),"
+            . "('$schoolID', '50', 'Match Box', 'http://localhost/SchoolCashRewards_php/catalogImages/matchbox.jpg' ,'$std'),"
+            . "('$schoolID', '500', 'Connect Four', 'http://localhost/SchoolCashRewards_php/catalogImages/connect-four.jpg' ,'$std'),"
+            . "('$schoolID', '750', 'Battleship', 'http://localhost/SchoolCashRewards_php/catalogImages/battleship.jpg' ,'$std'),"
+            . "('$schoolID', '250', 'UNO', 'http://localhost/SchoolCashRewards_php/catalogImages/uno.jpg','$std'),"
+            . "('$schoolID', '300', 'Puzzles', 'http://localhost/SchoolCashRewards_php/catalogImages/puzzle.jpg' ,'$std'),"
+            . "('$schoolID', '250', 'Farkle', 'http://localhost/SchoolCashRewards_php/catalogImages/farkle.jpg' ,'$std'),"
+            . "('$schoolID', '25', 'Goldfish crackers', 'http://localhost/SchoolCashRewards_php/catalogImages/goldfish.jpg' ,'$std'),"
+            . "('$schoolID', '25', 'Rice Crispy Treat', 'http://localhost/SchoolCashRewards_php/catalogImages/rice-krispie.jpg' ,'$std'),"
+            . "('$schoolID', '150', 'Lunch with teacher', '' ,'$std'),"
+            . "('$schoolID', '200', 'Teacher chair  for 1 day', '','$std'),"
+            . "('$schoolID', '50', 'Wear a hat', '' ,'$std'),"
+            . "('$schoolID', '100', 'Skip a homework page', '' ,'$std'),"
+            . "('$schoolID', '50', '10min extra computer time', '' ,'$std') ";
     return PDOexecuteNonQuery($sql, null);
 }
