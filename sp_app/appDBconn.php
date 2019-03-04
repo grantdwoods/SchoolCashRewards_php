@@ -25,8 +25,10 @@ function PDOexecuteNonQuery($sql, $varArray)
             die(json_encode(array('outcome' => false, 'err-message' => 'Unable to connect')));
         }
         $stmt = executeSQL($varArray, $pdo,$sql);
-        //Returns the number of rows changed by the last query.
-        return $stmt->rowCount();
+        if($stmt->rowCount()){
+            return($pdo->lastInsertId());
+        }
+        return 0;
 }
 
 function PDOexecuteQuery($sql, $varArray) 

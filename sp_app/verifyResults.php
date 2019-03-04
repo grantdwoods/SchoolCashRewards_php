@@ -19,6 +19,7 @@ function verifyPostResults($results)
     if($results)
     {
         http_response_code(201);
+        echo json_encode(array('entry' => $results));
     }
     else
     {
