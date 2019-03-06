@@ -25,8 +25,13 @@ function PDOexecuteNonQuery($sql, $varArray)
             die(json_encode(array('outcome' => false, 'err-message' => 'Unable to connect')));
         }
         $stmt = executeSQL($varArray, $pdo,$sql);
+        
         if($stmt->rowCount()){
-            return($pdo->lastInsertId());
+            $lastId = $pdo->lastInsertId();
+            if($lastId){
+                return $lastId;
+            }
+            return(1);
         }
         return 0;
 }
