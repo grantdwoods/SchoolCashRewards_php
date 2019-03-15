@@ -64,6 +64,20 @@ function putRequest($claim)
         else
             http_response_code (500);
     }
+	elseif(isset($putVars['classID'], $putVars['className']))
+	{
+		$newClassName = $putVars['className'];
+		$classID = $putVars['classID'];
+		if($newClassName)
+		{
+			$sql = 'UPDATE tblclass SET strClassName = ? ' 
+				.  'WHERE intClassID = ? AND intSchoolID = ?';
+			$varArray = [$newClassName, $classID, $claim['schoolID']];
+			verifyPutResults(PDOexecuteNonQuery($sql, $varArray));
+		}
+		else
+			http_response_code (500);
+	}
     else
         http_response_code (400);
 }
