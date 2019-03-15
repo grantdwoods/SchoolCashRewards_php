@@ -83,8 +83,8 @@ function setUpDefaultCatalog($schoolID)
     $std = "STD".$schoolID;
     $sql = "INSERT INTO tblcatalog (intSchoolID, intCost, strDescription, "
             . "strImageLocation, strTeacherID) VALUES "
-            . "('$schoolID', '5', 'pencils/pens', 'http://localhost/SchoolCashRewards_php/catalogImages/pens-and-pencils.jpg' ,'$std'),"
-            . "('$schoolID', '5', 'crayons', 'http://localhost/SchoolCashRewards_php/catalogImages/crayons.jpg' ,'$std'),"
+            . "('$schoolID', '5', 'Pencils/Pens', 'http://localhost/SchoolCashRewards_php/catalogImages/pens-and-pencils.jpg' ,'$std'),"
+            . "('$schoolID', '5', 'Crayons', 'http://localhost/SchoolCashRewards_php/catalogImages/crayons.jpg' ,'$std'),"
             . "('$schoolID', '50', 'Match Box', 'http://localhost/SchoolCashRewards_php/catalogImages/matchbox.jpg' ,'$std'),"
             . "('$schoolID', '500', 'Connect Four', 'http://localhost/SchoolCashRewards_php/catalogImages/connect-four.jpg' ,'$std'),"
             . "('$schoolID', '750', 'Battleship', 'http://localhost/SchoolCashRewards_php/catalogImages/battleship.jpg' ,'$std'),"

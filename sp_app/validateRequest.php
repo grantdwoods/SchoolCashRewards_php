@@ -27,3 +27,14 @@ function filterOptions($claim)
     else
         http_response_code(501);
 }
+
+function getArgs()
+{
+    $uri =$_SERVER['REQUEST_URI'];
+    $query= parse_url($uri);
+    if(array_key_exists('query',$query))
+        parse_str($query['query'],$elements);
+    else
+        $elements = NULL;
+    return $elements;
+}
