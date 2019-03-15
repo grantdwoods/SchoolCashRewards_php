@@ -79,12 +79,9 @@ function deleteRequest($claim)
 {
     $deleteVars = getArgs();
 
-    if(!isset($deleteVars['userID']))
-        $userID = $claim['userID'];
-    else
-        $userID = $deleteVars['userID'];
+    $userID = $deleteVars['userID'];
 
-    if(isset($deleteVars['itemID']))
+    if(isset($userID, $deleteVars['itemID']))
     {
         $sql = 'DELETE FROM tblcatalog WHERE intItemID = ? AND intSchoolID = ? AND strTeacherID = ?';
 

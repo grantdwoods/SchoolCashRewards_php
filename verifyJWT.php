@@ -24,7 +24,8 @@ function verifyToken()
 function findToken()
 {
     $headers = apache_request_headers();
-    
-    $jwt = $headers['jwt'];
-    return $jwt;
+    if(isset($headers['jwt'])){
+        return $headers['jwt'];
+    }
+    return null;
 }

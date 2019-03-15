@@ -1,9 +1,16 @@
 <?php
  include('sharedQueries.php');
+ include('../verifyJWT.php');
  
 if($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-    processPostRequest();
+    $claim = verifyToken();
+    if(!$claim){
+        processPostRequest();
+    }
+    else{
+        registerStudent($claim);
+    }
 }
 elseif($_SERVER['REQUEST_METHOD'] === 'GET')
 {
@@ -15,6 +22,9 @@ else
      echo json_encode(array('err-message'=>'Unsupported HTTP verb.'));
 }
    
+function registerStudent($claim){
+    
+}
 
 function processPostRequest()
 {
