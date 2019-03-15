@@ -33,7 +33,7 @@ function registerStudent($claim){
                 addStudentToClass($userID, $classID);
                 echo http_response_code(201);
             }
-            echo http_response_code(400);
+            http_response_code(400);
         }
         else
         {
@@ -42,7 +42,7 @@ function registerStudent($claim){
         }
     }
     else{
-        echo http_response_code(400);
+        http_response_code(400);
     }
 }
 
