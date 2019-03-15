@@ -33,8 +33,7 @@ function postRequest($claim)
 
 function deleteRequest($claim)
 {
-   $str = file_get_contents('php://input');
-   $deleteVars = json_decode($str, true);
+   $deleteVars = getArgs();
    
    if(isset($deleteVars['itemID']))
    {

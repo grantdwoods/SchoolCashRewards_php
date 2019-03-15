@@ -70,8 +70,7 @@ function putRequest($claim)
 
 function deleteRequest($claim)
 {
-    $str = file_get_contents('php://input');
-    $putVars = json_decode($str, true);
+    $putVars = getArgs();
     
     if(isset($putVars['classID']))
     {

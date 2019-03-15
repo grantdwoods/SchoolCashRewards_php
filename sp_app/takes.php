@@ -55,7 +55,7 @@ function deleteRequest($claim)
     $deleteVars = getArgs();
     if(isset($deleteVars['userID']))
     {
-        $sql = 'DELETE from tbltakes WHERE userID = ?';
+        $sql = 'DELETE from tbltakes WHERE strStudentID = ?';
         verifyDeleteResults(PDOexecuteNonQuery($sql, [$deleteVars['userID']]));
     }
     else

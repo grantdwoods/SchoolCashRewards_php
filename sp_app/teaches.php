@@ -63,8 +63,7 @@ function putRequest($claim)
 
 function deleteRequest($claim)
 {
-    $str = file_get_contents('php://input');
-    $deleteVars = json_decode($str,true);
+    $deleteVars = getArgs();
     $deleteTeacher = isset($deleteVars['userID']);
     $deleteClass = isset($deleteVars['classID']);
 
