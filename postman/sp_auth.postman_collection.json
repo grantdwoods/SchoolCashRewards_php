@@ -15,34 +15,26 @@
 					"formdata": [
 						{
 							"key": "userID",
-							"value": "grant",
+							"value": "admin1",
 							"type": "text"
 						},
 						{
-							"key": "passWord",
-							"value": "hello",
+							"key": "password",
+							"value": "admin1",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:/SchoolCashRewards_php/sp_auth/log_in.php",
+					"raw": "http://localhost/SchoolCashRewards_php/sp_auth/log_in.php",
 					"protocol": "http",
 					"host": [
-						"localhost:"
+						"localhost"
 					],
-					"port": "",
 					"path": [
 						"SchoolCashRewards_php",
 						"sp_auth",
 						"log_in.php"
-					],
-					"query": [
-						{
-							"key": "jwt",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInR5cGUiOiJhZG1pbiJ9.AOd8qXLxtz4LXDSVWU_J_a4nAX1Uz_jWiqobfL9yMT0",
-							"disabled": true
-						}
 					]
 				},
 				"description": "Basic log-in request to the applicaiton."
@@ -56,13 +48,13 @@
 				"header": [
 					{
 						"key": "jwt",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJhZG1pbjEiLCJyb2xlIjoiYSIsInNjaG9vbElEIjo4OTc2NjN9.scUlarDoiqzILLU2IzWxLXRc8-lju6R-rqkBDjAFa3o",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userID\":\"Tim\"\n}"
+					"raw": "{\n\t\"userID\":\"teacher2\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost/SchoolCashRewards_php/sp_auth/addAdmin.php",
@@ -90,12 +82,12 @@
 					"formdata": [
 						{
 							"key": "userID",
-							"value": "Jack",
+							"value": "jack",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123",
+							"value": "jack",
 							"type": "text"
 						},
 						{
@@ -105,7 +97,7 @@
 						},
 						{
 							"key": "schoolID",
-							"value": "1",
+							"value": "897663",
 							"type": "text"
 						}
 					]
@@ -133,7 +125,7 @@
 				"header": [
 					{
 						"key": "jwt",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJUZXN0aW5nIiwicm9sZSI6ImEiLCJzY2hvb2xJRCI6NX0.I-mHokHFwihykiKAhvlg_hc70FrxxziEn9Ns59yDAVA",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJhZG1pbjEiLCJyb2xlIjoiYSIsInNjaG9vbElEIjo4OTc2NjN9.scUlarDoiqzILLU2IzWxLXRc8-lju6R-rqkBDjAFa3o",
 						"type": "text"
 					}
 				],
@@ -171,13 +163,13 @@
 				"header": [
 					{
 						"key": "jwt",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjEwMDAwfQ.O03C46ltXXfLrGDYwC-MKMTRScXud8ksiC-FRSRColw",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJhZG1pbjEiLCJyb2xlIjoiYSIsInNjaG9vbElEIjo4OTc2NjN9.scUlarDoiqzILLU2IzWxLXRc8-lju6R-rqkBDjAFa3o",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userID\":\"grant\",\n\t\"newPassword\":\"hi\"\n}"
+					"raw": "{\n\t\"userID\":\"admin1\",\n\t\"newPassword\":\"Admin1\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost/SchoolCashRewards_php/sp_auth/changePassword.php",
