@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2019 at 07:32 PM
+-- Generation Time: Mar 20, 2019 at 09:33 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -35,14 +35,6 @@ CREATE TABLE `tblcalendar` (
   `strTime` varchar(5) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data for table `tblcalendar`
---
-
-INSERT INTO `tblcalendar` (`intSchoolID`, `strTeacherID`, `strWeekday`, `strTime`) VALUES
-(1, 'Stan', 'Monday', '14:30'),
-(1, 'grant', 'Friday', '14:30');
-
 -- --------------------------------------------------------
 
 --
@@ -63,19 +55,23 @@ CREATE TABLE `tblcatalog` (
 --
 
 INSERT INTO `tblcatalog` (`intSchoolID`, `intItemID`, `intCost`, `strDescription`, `strImageLocation`, `strTeacherID`) VALUES
-(1, 1, 20, 'Gum', '..', 'STD'),
-(1, 2, 40, 'Bracelet', '..', 'STD'),
-(1, 3, 100, 'Toy Car', '..', 'STD'),
-(1, 4, 5, 'Pencil', '..', 'STD'),
-(1, 5, 10, 'Eraser', '..', 'STD'),
-(1, 6, 500, 'Nap For Hour', '..', 'grant'),
-(1, 7, 300, 'Extra Credit', '..', 'Tim'),
-(1, 8, 200, 'iPod For Day', '..', 'grant'),
-(1, 10, 600, 'Food In Class', '..', 'Stan'),
-(1, 11, 45, 'Nothing.', '...', 'grant'),
-(1, 12, 3000, 'UPDATED', NULL, 'grant'),
-(1, 13, 3000, 'UPDATED STD', NULL, 'STD'),
-(1, 17, 10, 'A thing in STD.', NULL, 'STD');
+(897663, 150, 5, 'Pencils/Pens', 'http://localhost/SchoolCashRewards_php/catalogImages/pens-and-pencils.jpg', 'STD897663'),
+(897663, 151, 5, 'Crayons', 'http://localhost/SchoolCashRewards_php/catalogImages/crayons.jpg', 'STD897663'),
+(897663, 152, 50, 'Match Box', 'http://localhost/SchoolCashRewards_php/catalogImages/matchbox.jpg', 'STD897663'),
+(897663, 153, 500, 'Connect Four', 'http://localhost/SchoolCashRewards_php/catalogImages/connect-four.jpg', 'STD897663'),
+(897663, 154, 750, 'Battleship', 'http://localhost/SchoolCashRewards_php/catalogImages/battleship.jpg', 'STD897663'),
+(897663, 155, 250, 'UNO', 'http://localhost/SchoolCashRewards_php/catalogImages/uno.jpg', 'STD897663'),
+(897663, 156, 300, 'Puzzles', 'http://localhost/SchoolCashRewards_php/catalogImages/puzzle.jpg', 'STD897663'),
+(897663, 157, 250, 'Farkle', 'http://localhost/SchoolCashRewards_php/catalogImages/farkle.jpg', 'STD897663'),
+(897663, 158, 25, 'Goldfish crackers', 'http://localhost/SchoolCashRewards_php/catalogImages/goldfish.jpg', 'STD897663'),
+(897663, 159, 25, 'Rice Crispy Treat', 'http://localhost/SchoolCashRewards_php/catalogImages/rice-krispie.jpg', 'STD897663'),
+(897663, 160, 150, 'Lunch with teacher', '', 'STD897663'),
+(897663, 161, 200, 'Teacher chair  for 1 day', '', 'STD897663'),
+(897663, 162, 50, 'Wear a hat', '', 'STD897663'),
+(897663, 163, 100, 'Skip a homework page', '', 'STD897663'),
+(897663, 164, 50, '10min extra computer time', '', 'STD897663'),
+(897663, 168, 50, 'Moral Support', NULL, 'admin1'),
+(897663, 169, 26, 'Bouncy Ball', NULL, 'teacher1');
 
 -- --------------------------------------------------------
 
@@ -93,10 +89,19 @@ CREATE TABLE `tblcatalogremove` (
 --
 
 INSERT INTO `tblcatalogremove` (`intItemID`, `strTeacherID`) VALUES
-(1, 'grant'),
-(2, 'Tim'),
-(3, 'Stan'),
-(3, 'grant');
+(150, 'admin1'),
+(151, 'admin1'),
+(152, 'admin1'),
+(153, 'admin1'),
+(155, 'admin1'),
+(156, 'admin1'),
+(157, 'admin1'),
+(158, 'admin1'),
+(160, 'admin1'),
+(161, 'admin1'),
+(162, 'admin1'),
+(163, 'admin1'),
+(164, 'admin1');
 
 -- --------------------------------------------------------
 
@@ -116,10 +121,9 @@ CREATE TABLE `tblclass` (
 --
 
 INSERT INTO `tblclass` (`intSchoolID`, `intClassID`, `strClassName`, `intClassCoupons`) VALUES
-(1, 10, 'Class', 20),
-(1, 22, 'Tim\'s Class', 20),
-(1, 25, 'Stan\'s Class', 0),
-(1, 42, 'Jay\'s Class', 0);
+(897663, 46, 'Class One', 0),
+(897663, 47, 'Class Two', 0),
+(897663, 48, 'Ms. Brook\'s Class', 0);
 
 -- --------------------------------------------------------
 
@@ -141,11 +145,7 @@ CREATE TABLE `tblhistory` (
 --
 
 INSERT INTO `tblhistory` (`intSchoolID`, `strStudentID`, `dtmDate`, `strComment`, `intAmount`, `strTeacherID`) VALUES
-(1, 'Bobby', '2018-12-12 00:00:00', 'Harro', -10, 'grant'),
-(1, 'Jack', '2018-12-31 00:00:00', 'Cleaning the classroom tables', 100, 'grant'),
-(1, 'Jack', '2019-01-03 00:00:00', 'updated', -50, 'grant'),
-(1, 'Jack', '2019-01-03 00:00:02', 'Cleaning the classroom tables', 100, 'grant'),
-(1, 'Ryan', '2018-10-23 00:00:02', 'Cleaning', 100, 'grant');
+(897663, 'HConklin', '2019-03-18 11:15:06', 'Helped clean up the cafeteria', 10, 'admin1');
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ CREATE TABLE `tblschool` (
 --
 
 INSERT INTO `tblschool` (`intSchoolID`, `strSchoolName`, `strCashName`) VALUES
-(1, 'school1', 'schoolCash1');
+(897663, 'The School', 'School Cash');
 
 -- --------------------------------------------------------
 
@@ -185,11 +185,17 @@ CREATE TABLE `tblstudent` (
 --
 
 INSERT INTO `tblstudent` (`intSchoolID`, `strStudentID`, `strFirstName`, `strLastName`, `intCoupons`) VALUES
-(1, 'Bobby', 'Bob', 'Babbin', 36),
-(1, 'Jack', 'Jackal', 'Jones', 15),
-(1, 'Jane', 'Plain', 'Jane', 200),
-(1, 'Jill', 'Jillian', 'Jones', 0),
-(1, 'Ryan', 'Rayanson', 'Rhonin', 0);
+(897663, '241412', 'Student', '4124', 0),
+(897663, 'HConklin', 'Harriet', 'Conklin', 10),
+(897663, 'JFriday', 'Joseph', 'Friday', 0),
+(897663, 'SFree', 'Stanley', 'Freeburg', 0),
+(897663, 'SSnod', 'Stretch', 'Snodgrass', 0),
+(897663, 'WDenton', 'Walter', 'Denton', 0),
+(897663, 'student1', 'Student', 'One', 0),
+(897663, 'student2', 'Student', 'Two', 0),
+(897663, 'student3', 'Student', 'Three', 0),
+(897663, 'student4', 'Student', 'Four', 0),
+(897663, 'student5', 'Student ', 'Five', 0);
 
 -- --------------------------------------------------------
 
@@ -207,11 +213,15 @@ CREATE TABLE `tbltakes` (
 --
 
 INSERT INTO `tbltakes` (`strStudentID`, `intClassID`) VALUES
-('Bobby', 22),
-('Jack', 10),
-('Jane', 10),
-('Jill', 10),
-('Ryan', 25);
+('HConklin', 48),
+('JFriday', 48),
+('SFree', 48),
+('SSnod', 48),
+('WDenton', 48),
+('student2', 46),
+('student3', 46),
+('student4', 47),
+('student5', 47);
 
 -- --------------------------------------------------------
 
@@ -231,10 +241,10 @@ CREATE TABLE `tblteacher` (
 --
 
 INSERT INTO `tblteacher` (`intSchoolID`, `strTeacherID`, `strFirstName`, `strLastName`) VALUES
-(1, 'STD', 'n/a', 'n/a'),
-(1, 'Stan', 'stan', 'man'),
-(1, 'Tim', 'Tim', 'Timn'),
-(1, 'grant', 'grant', 'woods');
+(897663, 'STD897663', 'Standard', 'Catalog'),
+(897663, 'admin1', 'Admin', 'One'),
+(897663, 'teacher1', 'Teacher', 'One'),
+(897663, 'teacher2', 'Teacher', 'Two');
 
 -- --------------------------------------------------------
 
@@ -252,7 +262,9 @@ CREATE TABLE `tblteaches` (
 --
 
 INSERT INTO `tblteaches` (`strTeacherID`, `intClassID`) VALUES
-('Stan', 25);
+('admin1', 48),
+('teacher1', 46),
+('teacher2', 47);
 
 --
 -- Indexes for dumped tables
@@ -334,13 +346,13 @@ ALTER TABLE `tblteaches`
 -- AUTO_INCREMENT for table `tblcatalog`
 --
 ALTER TABLE `tblcatalog`
-  MODIFY `intItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `intItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `tblclass`
 --
 ALTER TABLE `tblclass`
-  MODIFY `intClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `intClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables

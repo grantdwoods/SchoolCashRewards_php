@@ -568,6 +568,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "By url",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiJncmFudCIsInJvbGUiOiJhIiwic2Nob29sSUQiOjF9.MNV0kT23f9OSw5IAVeL9g3ij9_HkUMhONgNRE-ICFLI",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/SchoolCashRewards_php/sp_app/takes.php?userID=Jill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"SchoolCashRewards_php",
+								"sp_app",
+								"takes.php"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "Jill"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1040,11 +1073,12 @@
 								{
 									"key": "classID",
 									"value": "39",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "className",
-									"value": "Jay's Class",
+									"value": "A NEW THINGddd",
 									"type": "text"
 								}
 							]

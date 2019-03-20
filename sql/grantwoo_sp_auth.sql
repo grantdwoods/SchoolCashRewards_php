@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2019 at 06:17 PM
+-- Generation Time: Mar 20, 2019 at 09:33 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -40,15 +40,14 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`userID`, `hash`, `role`, `intSchoolID`) VALUES
-('Bobby', '$2y$10$Lf.kAF0eQO0HJmhBRvonye5Qh9gPMKTENmi1PDAsB/.fh4bQdBd3S', 's', 1),
-('Jack', '$2y$10$6PIFm1aXJkyDQAM.P8nMfeq3OBemnwISORw0VxqkOHvCyTksFP9GG', 's', 1),
-('Jane', '$2y$10$bS2q94Gez.3MZ61J1obTQ.uBllHqYnjBj7f0CEJFxMBISqzA0U0IS', 's', 1),
-('Jill', '$2y$10$ldoaNL/lyv/SMHuX7TpwtedaHf3wWrl8Q1bciGII/K7gxD8E8KJGW', 's', 1),
-('JonMan', '$2y$10$SygowpWOR7Mx2ee3ivuwDeuj.bA8potoDQDvJPGE6WzPeS44CXxp.', 'a', 2),
-('Ryan', '$2y$10$SDNGs9c10L66JXMiA/qLi.pPY.81oqo8lH/p61/AdAnWUBqp/LYbu', 's', 1),
-('Stan', '$2y$10$xSe30jGDnSgLdKL7OHqvsOw.LAX.H/mqF3zp6jxsNzGuUPHqHFJs2', 't', 1),
-('Tim', '$2y$10$tlodmSm.XS08wENr5Cp8FuAmitXMzm6E0qTOFd2bBiD33qC7tl/sK', 'a', 1),
-('grant', '$2y$10$ginOyfduDIXjgOKVl87z1OCXO8eHtiKrxPQ0iF4RRKjQR5RqvGeWi', 'a', 1);
+('admin1', '$2y$10$ubPmspQpy7xibhp3kjovdOPrrMsZSJWEPfCrcbMExwUuN2EXXMvg2', 'a', 897663),
+('student1', '$2y$10$qCcp4ghlT5vou4Cp281mxuhPOCqWqJYmosnVUCItiZYuCDdrUGMZS', 's', 897663),
+('student2', '$2y$10$AiVA.1AI3wlsQCGsNjxfm.PtXAEFJTagGliCKC3PIrh/xD8iID9ES', 's', 897663),
+('student3', '$2y$10$T3R/ptpOaMNrDTtrJxhPFuOPEIIzK4gO8JFRAeNbBHGeoGNkVek4y', 's', 897663),
+('student4', '$2y$10$Vo1fLwaeypCVVx9g5AH/5.Ae5uVBOwhMhYKxp3oXM0nRvUB4NPscO', 's', 897663),
+('student5', '$2y$10$B3e/oY7AmI4EzHpfXx4HwuFwMIQ1Xvm.7LmDIR2Y/jWL.nVwlQdPO', 's', 897663),
+('teacher1', '$2y$10$rzlzcTEE4sDzG9mPHX5Fr.Pdt/txEVUmcgjEiE7.e3gNlKiCkWQ1e', 't', 897663),
+('teacher2', '$2y$10$p6hyOIYy5q2bwIY/aatZdumGgkueKZ1OSam53baOfhxJcHDARy74G', 't', 897663);
 
 --
 -- Indexes for dumped tables
